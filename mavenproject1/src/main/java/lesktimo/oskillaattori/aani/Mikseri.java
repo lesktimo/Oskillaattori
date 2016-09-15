@@ -9,6 +9,7 @@ import com.jsyn.unitgen.LineOut;
 public class Mikseri {
 
     public LineOut ulos;
+    
 
     public Mikseri() {
         this.ulos = new LineOut();

@@ -22,13 +22,17 @@ public class Syntetisaattori {
 
     public void aloita() throws InterruptedException {
 
-        masiina.start(0);
-        osk1.yhdista(mikseri.ulos);
-        osk1.aloitaOskillaatori();
-        mikseri.aloitaMikseri();
-        masiina.sleepFor(500.0);
-        osk1.lopetaOskillaatori();
-        mikseri.lopetaMikseri();
-        masiina.stop();
+        try {
+            masiina.start();
+            osk1.yhdista(mikseri.ulos);
+            osk1.aloitaOskillaatori();
+            mikseri.aloitaMikseri();
+            masiina.sleepFor(5.0);
+            osk1.lopetaOskillaatori();
+            mikseri.lopetaMikseri();
+            masiina.stop();
+        } catch (Exception e) {
+            System.out.println("Caught " + e);
+        }
     }
 }
