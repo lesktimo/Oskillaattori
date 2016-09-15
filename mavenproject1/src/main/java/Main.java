@@ -14,6 +14,7 @@ public class Main {
         Syntetisaattori syntikka = new Syntetisaattori();
         try {
             syntikka.aloita();
+            
         } catch (InterruptedException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }

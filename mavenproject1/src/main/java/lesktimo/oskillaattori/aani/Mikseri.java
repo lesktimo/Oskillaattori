@@ -6,10 +6,10 @@ import com.jsyn.unitgen.LineOut;
  *
  * @author lesktimo
  */
+//tämä luokka ole vielä käytössä syntetisaattorissa
 public class Mikseri {
 
     public LineOut ulos;
-    
 
     public Mikseri() {
         this.ulos = new LineOut();

@@ -1,6 +1,7 @@
 package lesktimo.oskillaattori.aani;
 
 //aluksi sine, eli aallonmuotoinen oskillaatori, myöhemmin vähän lisää
+//tämä luokka ole vielä käytössä syntetisaattorissa
 import com.jsyn.unitgen.UnitOscillator;
 import com.jsyn.unitgen.LineOut;
 import com.jsyn.unitgen.SineOscillator;
