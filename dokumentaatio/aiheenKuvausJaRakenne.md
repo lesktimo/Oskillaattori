@@ -9,3 +9,6 @@ Musiikinharrastaja
 #####Käyttäjän toiminnot:
 -Käyttäjä voi luoda ja muokata ääntä käyttöliittymän kautta
 -Käyttäjä voi ladata ja tallettaa ääniätiedostoja
+
+![Alt text](Luokkakaavio.png "Luokkakaavio")
+

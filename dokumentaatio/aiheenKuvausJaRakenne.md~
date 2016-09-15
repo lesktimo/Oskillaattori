@@ -1,0 +1,11 @@
+#Oskillaattori
+
+##Kuvaus
+Pyrkimyksenä on luoda yksinkertainen oskillaattori javalla. Oskillaatori on eräänlainen nykymusiikissa käytetty soitin.  Ääntä voidaan muokata bittimanipulaatiolla.
+
+#####Käyttäjä:
+Musiikinharrastaja
+
+#####Käyttäjän toiminnot:
+-Käyttäjä voi luoda ja muokata ääntä käyttöliittymän kautta
+-Käyttäjä voi ladata ja tallettaa ääniätiedostoja
