@@ -1,47 +1,45 @@
 package lesktimo.oskillaattori.aani;
 
-//aluksi sine, eli aallonmuotoinen oskillaatori, myöhemmin vähän lisää
-//tämä luokka ole vielä käytössä syntetisaattorissa
+//aluksi sine, eli aallonmuotoinen oskillaattori, myöhemmin vähän lisää
+
+import com.jsyn.ports.UnitInputPort;
 import com.jsyn.unitgen.UnitOscillator;
 import com.jsyn.unitgen.LineOut;
 import com.jsyn.unitgen.SineOscillator;
+import com.jsyn.unitgen.UnitGenerator;
 
 /**
  *
  * @author lesktimo
  */
-public class Oskillaattori {
+public class Oskillaattori extends SineOscillator {
 
     private double taajuus;
     private double voimakkuus;
     private String tyyppi;
-    private UnitOscillator oskillaattori;
-    private LineOut linja;
+    private SineOscillator oskillaattori;
+    
 
-    public Oskillaattori(String tyyppi, double taajuus, double voimakkuus, LineOut linja) {
+    public Oskillaattori(String tyyppi, double taajuus, double voimakkuus) {
 
         this.taajuus = taajuus;
         this.voimakkuus = voimakkuus;
         this.tyyppi = tyyppi;
-        this.linja = linja;
-        this.oskillaattori = luoOskillaatori(this.tyyppi, this.taajuus, this.voimakkuus);
+        this.oskillaattori = luoAaltoOskillaatori(this.tyyppi, this.taajuus, this.voimakkuus);
 
     }
 
-    public static UnitOscillator luoOskillaatori(String tyyppi, double taajuus, double voimakkuus) {
+    public static SineOscillator luoAaltoOskillaatori(String tyyppi, double taajuus, double voimakkuus) {
 
-        UnitOscillator palautus = null;
+        SineOscillator luotuOsk = null;
         if (tyyppi.equals("sine")) {
             SineOscillator osk = new SineOscillator(taajuus, voimakkuus);
-            palautus = osk;
+            luotuOsk = osk;
         }
-        return palautus;
+        return luotuOsk;
     }
 
-    public void yhdista(LineOut linja) {
-        oskillaattori.output.connect(0, linja.input, 0);
-        oskillaattori.output.connect(0, linja.input, 1);
-    }
+    
 
     public void aloitaOskillaatori() {
         oskillaattori.start();
@@ -50,6 +48,5 @@ public class Oskillaattori {
     public void lopetaOskillaatori() {
         oskillaattori.stop();
     }
-    
-    
+
 }

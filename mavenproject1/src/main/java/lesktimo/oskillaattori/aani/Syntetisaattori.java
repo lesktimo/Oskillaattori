@@ -3,9 +3,6 @@ package lesktimo.oskillaattori.aani;
 import com.jsyn.JSyn;
 import com.jsyn.Synthesizer;
 import com.jsyn.devices.AudioDeviceManager;
-import com.jsyn.unitgen.LineOut;
-import com.jsyn.unitgen.SineOscillator;
-import com.jsyn.unitgen.UnitOscillator;
 
 /**
  *
@@ -16,38 +13,40 @@ public class Syntetisaattori {
     private int kanavatSisaan;
     private int kanavatUlos;
     private Synthesizer masiina;
-    private UnitOscillator osk1;
+    private Oskillaattori osk1;
     private Mikseri mikseri;
-    private LineOut out;
 
     public Syntetisaattori() {
+        //stereo sisään ja ulos
         kanavatSisaan = 2;
         kanavatUlos = 2;
+        //määritellään syntikan moottori, mikseri ja oskillaattori
         this.masiina = JSyn.createSynthesizer();
-//      this.mikseri = new Mikseri();
-
-//      tuli pieniä ongelmia aluksi näiden luokkien kanssa,
-//      joten melkein kaikki toiminnallisuus on tällä hetkellä tässä luokassa,
-//      jotta se toimisi. Alan pikku hiljaa siirtämään mikserille sen omaa
-//      toimintaansa, kuten myös oskillaattorille
+        this.mikseri = new Mikseri();
+        this.osk1 = new Oskillaattori("sine", 440.0, 0.5);
+        //alustetaan syntikan äänikortti ja kanavat
+        masiina.start(44100, AudioDeviceManager.USE_DEFAULT_DEVICE, kanavatSisaan, AudioDeviceManager.USE_DEFAULT_DEVICE,
+                kanavatUlos);
+        //lisätään syntikkaan oskillaattori ja mikseri, sekä kytketään ne
+        masiina.add(osk1);
+        masiina.add(mikseri.ulostulo1);
+        mikseri.yhdista(osk1);
 
     }
 
     public void aloita() throws InterruptedException {
+
         try {
-            masiina.start(44100, AudioDeviceManager.USE_DEFAULT_DEVICE, kanavatSisaan, AudioDeviceManager.USE_DEFAULT_DEVICE,
-                    kanavatUlos);
-            masiina.add(osk1 = new SineOscillator(440.0, 0.5));
-            masiina.add(out = new LineOut());
-            osk1.output.connect(0, out.input, 0);
-            osk1.start();
-            out.start();
+        //syntikka "soittaa" oskillaattorille määritetyltä taajuudelta 5 sek.
+            mikseri.aloitaMikseri();
             masiina.sleepFor(5.0);
-            osk1.stop();
-            out.stop();
+            mikseri.lopetaMikseri();
             masiina.stop();
+
         } catch (Exception e) {
+
             System.out.println("Caught " + e);
+
         }
     }
 }

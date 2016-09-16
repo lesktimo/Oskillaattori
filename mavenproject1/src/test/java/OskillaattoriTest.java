@@ -15,9 +15,9 @@ import static org.junit.Assert.*;
  *
  * @author lesktimo
  */
-public class JUnitTest {
+public class OskillaattoriTest {
     
-    public JUnitTest() {
+    public OskillaattoriTest() {
     }
     
     @BeforeClass
