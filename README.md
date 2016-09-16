@@ -7,3 +7,5 @@ Tätä signaalia muokaten voidaan luoda musiikkia.
 [aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 
 [tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
+
+[Jsyn ohje](dokumentaatio/jsynOhje.md)
