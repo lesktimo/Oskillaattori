@@ -19,7 +19,7 @@ public class Mikseri {
         ulostulo1 = new LineOut();
 
     }
-public void yhdista(Oskillaattori oskillaattori) {
+public void yhdista(AaltoOskillaattori oskillaattori) {
         oskillaattori.output.connect(0, ulostulo1.input, 0);
         oskillaattori.output.connect(0, ulostulo1.input, 1);
     }
