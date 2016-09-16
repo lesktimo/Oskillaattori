@@ -1,9 +1,6 @@
 package lesktimo.oskillaattori.aani;
 
-import com.jsyn.ports.UnitInputPort;
-import com.jsyn.ports.UnitOutputPort;
 import com.jsyn.unitgen.LineOut;
-import com.jsyn.unitgen.UnitGenerator;
 
 /**
  *
@@ -19,11 +16,12 @@ public class Mikseri {
         ulostulo1 = new LineOut();
 
     }
-public void yhdista(AaltoOskillaattori oskillaattori) {
+
+    protected void yhdista(AaltoOskillaattori oskillaattori) {
         oskillaattori.output.connect(0, ulostulo1.input, 0);
         oskillaattori.output.connect(0, ulostulo1.input, 1);
     }
-    
+
     public void aloitaMikseri() {
         ulostulo1.start();
     }
@@ -34,8 +32,7 @@ public void yhdista(AaltoOskillaattori oskillaattori) {
 
     public LineOut getUlostulo1() {
         return ulostulo1;
-        
+
     }
 
-    
 }

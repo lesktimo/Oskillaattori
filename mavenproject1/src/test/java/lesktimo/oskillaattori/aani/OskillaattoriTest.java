@@ -1,4 +1,4 @@
-package lesktimo.oskillaattori.aanitest;
+package lesktimo.oskillaattori.aani;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -75,6 +75,43 @@ public class OskillaattoriTest {
         AaltoOskillaattori osk = new AaltoOskillaattori(440.0, 0.5);
         osk.setVoimakkuus(0.9);
         double x = osk.getVoimakkuus();
+        assertEquals(0.9, x, Double.MIN_VALUE);
+    }
+
+    @Test
+    public void superTaajuusTasmaa() {
+        AaltoOskillaattori osk = new AaltoOskillaattori(400.0, 0.5);
+        double x = osk.frequency.get();
+        assertEquals(400.0, x, Double.MIN_VALUE);
+    }
+
+    @Test
+    public void superTaajuusTasmaa2() {
+        AaltoOskillaattori osk = new AaltoOskillaattori(800.0, 0.5);
+        double x = osk.frequency.get();
+        assertEquals(800.0, x, Double.MIN_VALUE);
+    }
+
+    @Test
+    public void superTaajuusMuuttuu() {
+        AaltoOskillaattori osk = new AaltoOskillaattori(440.0, 0.5);
+        osk.setTaajuus(100);
+        double x = osk.frequency.get();
+        assertEquals(100.0, x, Double.MIN_VALUE);
+    }
+
+    @Test
+    public void superVoimakkuusTasmaa() {
+        AaltoOskillaattori osk = new AaltoOskillaattori(440.0, 0.5);
+        double x = osk.amplitude.get();
+        assertEquals(0.5, x, Double.MIN_VALUE);
+    }
+
+    @Test
+    public void superVoimakkuusMuuttuu() {
+        AaltoOskillaattori osk = new AaltoOskillaattori(440.0, 0.5);
+        osk.setVoimakkuus(0.9);
+        double x = osk.amplitude.get();
         assertEquals(0.9, x, Double.MIN_VALUE);
     }
 }

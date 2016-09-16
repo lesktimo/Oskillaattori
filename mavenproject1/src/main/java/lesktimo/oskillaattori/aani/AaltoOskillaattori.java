@@ -1,11 +1,7 @@
 package lesktimo.oskillaattori.aani;
 
 //aluksi sine, eli aallonmuotoinen oskillaattori, myöhemmin vähän lisää
-import com.jsyn.ports.UnitInputPort;
-import com.jsyn.unitgen.UnitOscillator;
-import com.jsyn.unitgen.LineOut;
 import com.jsyn.unitgen.SineOscillator;
-import com.jsyn.unitgen.UnitGenerator;
 
 /**
  *

@@ -1,4 +1,4 @@
-package lesktimo.oskillaattori.aanitest;
+package lesktimo.oskillaattori.aani;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
