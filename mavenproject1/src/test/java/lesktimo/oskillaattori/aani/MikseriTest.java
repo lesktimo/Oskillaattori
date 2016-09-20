@@ -5,15 +5,10 @@ package lesktimo.oskillaattori.aani;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import com.jsyn.unitgen.LineOut;
-import lesktimo.oskillaattori.aani.Mikseri;
-import lesktimo.oskillaattori.aani.AaltoOskillaattori;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
