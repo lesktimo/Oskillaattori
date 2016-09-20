@@ -40,30 +40,30 @@ public class SyntetisaattoriTest {
 //     TODO add test methods here.
 //     The methods must be annotated with annotation @Test. For example:
 //    
-    @Test
-    public void kanavatSisaanTasmaa() {
-        Syntetisaattori s = new Syntetisaattori(44100);
-        int i = s.getKanavatSisaan();
-        assertEquals(i, 2);
-    }
-
-    @Test
-    public void kanavatUlosTasmaa() {
-        Syntetisaattori s = new Syntetisaattori(44100);
-        int i = s.getKanavatUlos();
-        assertEquals(i, 2);
-    }
-
-    @Test
-    public void onkoSamaSampleRate() {
-        Syntetisaattori s = new Syntetisaattori(44100);
-        assertEquals(s.getFrameRate(), 44100);
-    }
-
-    @Test
-    public void onkoSamaSampleRate2() {
-        Syntetisaattori s = new Syntetisaattori(48000);
-        assertEquals(s.getFrameRate(), 48000);
-    }
-
+//    @Test
+//    public void kanavatSisaanTasmaa() {
+//        Syntetisaattori s = new Syntetisaattori(44100);
+//        int i = s.getKanavatSisaan();
+//        assertEquals(i, 2);
+//    }
+//
+//    @Test
+//    public void kanavatUlosTasmaa() {
+//        Syntetisaattori s = new Syntetisaattori(44100);
+//        int i = s.getKanavatUlos();
+//        assertEquals(i, 2);
+//    }
+//
+//    @Test
+//    public void onkoSamaSampleRate() {
+//        Syntetisaattori s = new Syntetisaattori(44100);
+//        assertEquals(s.getFrameRate(), 44100);
+//    }
+//
+//    @Test
+//    public void onkoSamaSampleRate2() {
+//        Syntetisaattori s = new Syntetisaattori(48000);
+//        assertEquals(s.getFrameRate(), 48000);
+//    }
+//
 }

@@ -1,13 +1,13 @@
 package lesktimo.oskillaattori.aani;
 
-import com.jsyn.unitgen.SineOscillator;
+import com.jsyn.unitgen.SquareOscillator;
 
 /**
  *
  * @author lesktimo
  */
 
-public class AaltoOskillaattori extends SineOscillator {
+public class NelikulmaOskillaattori extends SquareOscillator {
     
     private double taajuus;
     private double voimakkuus;
@@ -15,7 +15,7 @@ public class AaltoOskillaattori extends SineOscillator {
     
     
     
-    public AaltoOskillaattori(double taajuus, double voimakkuus) {
+    public NelikulmaOskillaattori(double taajuus, double voimakkuus) {
         
         this.taajuus = taajuus;
         this.voimakkuus = voimakkuus;
