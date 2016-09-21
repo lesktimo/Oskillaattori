@@ -7,3 +7,4 @@ Päivä | Tunnit | Kuvaus
 20.09.2016 | 3h | GUI:n suunnittelua ja alustusta
 20.09.2016 | 4h | GUI:n toimivuuden parantelua
 21.09.2016 | 1h | GUI:n parantelua
+21.09.2016 | 4h | Oskillaattorien valintamenu

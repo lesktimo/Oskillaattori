@@ -44,7 +44,7 @@ public class ButtonKuuntelija implements ActionListener {
         } else if (e.getSource().equals(lopeta)) {
             syntikka.lopeta();
             aS.stop();
-        }
+        } 
     }
 
 }

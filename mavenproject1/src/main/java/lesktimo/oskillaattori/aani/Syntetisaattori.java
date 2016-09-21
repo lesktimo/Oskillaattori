@@ -19,18 +19,22 @@ public class Syntetisaattori {
     private UnitOscillator osk3;
     private Mikseri mikseri;
     private boolean on;
+    int o1, o2, o3;
 
     //tässä voidaan määrittää moottorin framerate hertseinä
-    public Syntetisaattori(int hz) {
+    public Syntetisaattori(int hz, int o1, int o2, int o3) {
         //stereo sisään ja ulos
         kanavatSisaan = 2;
         kanavatUlos = 2;
+        this.o1 = o1;
+        this.o2 = o2;
+        this.o3 = o3;
         //määritellään syntikan moottori, mikseri ja oskillaattori
         this.masiina = JSyn.createSynthesizer();
         this.mikseri = new Mikseri();
-        this.osk1 = new SiniOskillaattori(440.0, 0.0);
-        this.osk2 = new SahaOskillaattori(440.0, 0.0);
-        this.osk3 = new NelikulmaOskillaattori(440.0, 0.0);
+        this.osk1 = valitseOskillaattori(o1);
+        this.osk2 = valitseOskillaattori(o2);
+        this.osk3 = valitseOskillaattori(o3);
         //alustetaan syntikan äänikortti ja kanavat
         masiina.start(hz, AudioDeviceManager.USE_DEFAULT_DEVICE, kanavatSisaan, AudioDeviceManager.USE_DEFAULT_DEVICE,
                 kanavatUlos);
@@ -108,54 +112,46 @@ public class Syntetisaattori {
         return masiina;
     }
 
-    public void vaihdaOsc(UnitOscillator osc, int i, int j, double dT, double dV) {
+    public static UnitOscillator valitseOskillaattori(int i) {
+
+        UnitOscillator osc = null;
 
         switch (i) {
+
             case 1:
 
-                masiina.remove(osc);
-                UnitOscillator uusiOsk1 = new SiniOskillaattori(dT, dV);
-                masiina.add(uusiOsk1);
-//                vaihto(uusiOsk1, j);
-                
+                osc = new SiniOskillaattori(440.0, 0.0);
 
                 break;
 
             case 2:
 
-                masiina.remove(osc);
-                UnitOscillator uusiOsk2 = new SahaOskillaattori(dT, dV);
-                masiina.add(uusiOsk2);
-//                vaihto(uusiOsk2, j);
+                osc = new NelikulmaOskillaattori(440.0, 0.0);
 
                 break;
 
             case 3:
 
-                masiina.remove(osc);
-                UnitOscillator uusiOsk3= new NelikulmaOskillaattori(dT, dV);
-                masiina.add(uusiOsk3);
-//                vaihto(uusiOsk3, j);
-                
-                break;
-
-            default:
+                osc = new SahaOskillaattori(440.0, 0.0);
 
                 break;
+
         }
+
+        return osc;
+
     }
 
-    public void vaihto(UnitOscillator osc, int j) {
-        switch (j) {
-            case 1:
-                mikseri.yhdista1(osc);
-                break;
-            case 2:
-                mikseri.yhdista2(osc);
-                break;
-            case 3:
-                mikseri.yhdista3(osc);
-                break;
-        }
+    public void setO1(int o1) {
+        this.o1 = o1;
     }
+
+    public void setO2(int o2) {
+        this.o2 = o2;
+    }
+
+    public void setO3(int o3) {
+        this.o3 = o3;
+    }
+
 }
