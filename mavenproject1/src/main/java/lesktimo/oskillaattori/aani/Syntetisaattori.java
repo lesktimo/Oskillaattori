@@ -67,7 +67,6 @@ public class Syntetisaattori {
             setOn(false);
 
             mikseri.lopetaMikseri();
-//          masiina.stop();
 
         } catch (Exception e) {
 
@@ -117,41 +116,17 @@ public class Syntetisaattori {
         UnitOscillator osc = null;
 
         switch (i) {
-
             case 1:
-
                 osc = new SiniOskillaattori(440.0, 0.0);
-
                 break;
-
             case 2:
-
                 osc = new NelikulmaOskillaattori(440.0, 0.0);
-
                 break;
-
             case 3:
-
                 osc = new SahaOskillaattori(440.0, 0.0);
-
                 break;
-
         }
-
         return osc;
-
-    }
-
-    public void setO1(int o1) {
-        this.o1 = o1;
-    }
-
-    public void setO2(int o2) {
-        this.o2 = o2;
-    }
-
-    public void setO3(int o3) {
-        this.o3 = o3;
     }
 
 }

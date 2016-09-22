@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lesktimo.oskillaattori.GUI;
+package lesktimo.oskillaattori.gui;
 
 import com.jsyn.scope.AudioScope;
 import java.awt.event.ActionEvent;

@@ -4,8 +4,12 @@ Taajuuden lisääminen nostaa myös äänen sävelkorkeutta.
 Tätä signaalia muokaten voidaan luoda musiikkia.
 
 ##Dokumentaatio
-[aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
+1.[Aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 
-[tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
+2.[Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 
-[Jsyn ohje](dokumentaatio/jsynOhje.md)
+3.[Pit-raportti](dokumentaatio/pit/201609222016/index.html)
+
+4.[Checkstyle-raportti](dokumentaatio/site/checkstyle.html)
+
+5.[Jsyn-ohje](dokumentaatio/jsynOhje.md)

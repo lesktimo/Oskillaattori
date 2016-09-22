@@ -32,27 +32,6 @@ public class Mikseri {
         lisaa();
     }
 
-    public void yhdista1(UnitOscillator osk) {
-        if (linja1.inputA.isConnected()) {
-            linja1.inputA.disconnectAll();
-            osk.output.connect(0, linja1.inputA, 0);
-        }
-    }
-
-    public void yhdista2(UnitOscillator osk) {
-        if (linja2.inputA.isConnected()) {
-            linja2.inputA.disconnectAll();
-            osk.output.connect(0, linja2.inputA, 0);
-        }
-    }
-
-    public void yhdista3(UnitOscillator osk) {
-        if (linja3.inputA.isConnected()) {
-            linja3.inputA.disconnectAll();
-            osk.output.connect(0, linja3.inputA, 0);
-        }
-    }
-
     public void lisaa() {
         linja1.output.connect(0, ulostulo1.input, 0);
         linja1.output.connect(0, ulostulo1.input, 1);

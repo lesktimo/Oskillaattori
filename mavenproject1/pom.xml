@@ -43,10 +43,8 @@
                 <configuration>
                     <targetClasses>
                         <param>lesktimo.oskillaattori.aani.*</param>
-                        <param>lesktimo.oskillaattori.aani.*</param>
                     </targetClasses>
                     <targetTests>
-                        <param>lesktimo.oskillaattori.aani.*</param>
                         <param>lesktimo.oskillaattori.aani.*</param>
                     </targetTests>
                 </configuration>

@@ -37,33 +37,108 @@ public class SyntetisaattoriTest {
     public void tearDown() {
     }
 
-//     TODO add test methods here.
-//     The methods must be annotated with annotation @Test. For example:
-//    
-//    @Test
-//    public void kanavatSisaanTasmaa() {
-//        Syntetisaattori s = new Syntetisaattori(44100);
-//        int i = s.getKanavatSisaan();
-//        assertEquals(i, 2);
-//    }
-//
-//    @Test
-//    public void kanavatUlosTasmaa() {
-//        Syntetisaattori s = new Syntetisaattori(44100);
-//        int i = s.getKanavatUlos();
-//        assertEquals(i, 2);
-//    }
-//
-//    @Test
-//    public void onkoSamaSampleRate() {
-//        Syntetisaattori s = new Syntetisaattori(44100);
-//        assertEquals(s.getFrameRate(), 44100);
-//    }
-//
-//    @Test
-//    public void onkoSamaSampleRate2() {
-//        Syntetisaattori s = new Syntetisaattori(48000);
-//        assertEquals(s.getFrameRate(), 48000);
-//    }
-//
+    @Test
+    public void kanavatSisaanTasmaa() {
+        Syntetisaattori s = new Syntetisaattori(44100, 1, 1, 1);
+        int i = s.getKanavatSisaan();
+        assertEquals(i, 2);
+    }
+
+    @Test
+    public void kanavatUlosTasmaa() {
+        Syntetisaattori s = new Syntetisaattori(44100, 1, 1, 1);
+        int i = s.getKanavatUlos();
+        assertEquals(i, 2);
+    }
+
+    @Test
+    public void onkoSamaSampleRate() {
+        Syntetisaattori s = new Syntetisaattori(44100, 1, 1, 1);
+        assertEquals(s.getFrameRate(), 44100);
+    }
+
+    @Test
+    public void onkoSamaSampleRate2() {
+        Syntetisaattori s = new Syntetisaattori(48000, 1, 1, 1);
+        assertEquals(s.getFrameRate(), 48000);
+    }
+
+    @Test
+    public void onkoOikeatOskillaattoritSini1() {
+        Syntetisaattori s = new Syntetisaattori(48000, 1, 1, 1);
+        SiniOskillaattori osk = new SiniOskillaattori(440, 0);
+        assertEquals(osk.getClass(), s.getOsk1().getClass());
+    }
+
+    @Test
+    public void onkoOikeatOskillaattoritSini2() {
+        Syntetisaattori s = new Syntetisaattori(48000, 1, 1, 1);
+        SiniOskillaattori osk = new SiniOskillaattori(440, 0);
+        assertEquals(osk.getClass(), s.getOsk2().getClass());
+    }
+
+    @Test
+    public void onkoOikeatOskillaattoritSini3() {
+        Syntetisaattori s = new Syntetisaattori(48000, 1, 1, 1);
+        SiniOskillaattori osk = new SiniOskillaattori(440, 0);
+        assertEquals(osk.getClass(), s.getOsk3().getClass());
+    }
+
+    @Test
+    public void onkoOikeatOskillaattoritNelikulma1() {
+        Syntetisaattori s = new Syntetisaattori(48000, 2, 2, 2);
+        NelikulmaOskillaattori osk = new NelikulmaOskillaattori(440, 0);
+        assertEquals(osk.getClass(), s.getOsk1().getClass());
+    }
+
+    @Test
+    public void onkoOikeatOskillaattoritNelikulma2() {
+        Syntetisaattori s = new Syntetisaattori(48000, 2, 2, 2);
+        NelikulmaOskillaattori osk = new NelikulmaOskillaattori(440, 0);
+        assertEquals(osk.getClass(), s.getOsk2().getClass());
+    }
+
+    @Test
+    public void onkoOikeatOskillaattoritNelikulma3() {
+        Syntetisaattori s = new Syntetisaattori(48000, 2, 2, 2);
+        NelikulmaOskillaattori osk = new NelikulmaOskillaattori(440, 0);
+        assertEquals(osk.getClass(), s.getOsk3().getClass());
+    }
+
+    @Test
+    public void onkoOikeatOskillaattoritSaha1() {
+        Syntetisaattori s = new Syntetisaattori(48000, 3, 3, 3);
+        SahaOskillaattori osk = new SahaOskillaattori(440, 0);
+        assertEquals(osk.getClass(), s.getOsk1().getClass());
+    }
+
+    @Test
+    public void onkoOikeatOskillaattoritSaha2() {
+        Syntetisaattori s = new Syntetisaattori(48000, 3, 3, 3);
+        SahaOskillaattori osk = new SahaOskillaattori(440, 0);
+        assertEquals(osk.getClass(), s.getOsk2().getClass());
+    }
+
+    @Test
+    public void onkoOikeatOskillaattoritSaha3() {
+        Syntetisaattori s = new Syntetisaattori(48000, 3, 3, 3);
+        SahaOskillaattori osk = new SahaOskillaattori(440, 0);
+        assertEquals(osk.getClass(), s.getOsk3().getClass());
+    }
+
+    @Test
+    public void onPaalla() throws InterruptedException {
+        Syntetisaattori s = new Syntetisaattori(48000, 1, 2, 3);
+        s.aloita();
+        assertEquals(s.isOn(), true);
+    }
+
+    @Test
+    public void eiOlePaalla() throws InterruptedException {
+        Syntetisaattori s = new Syntetisaattori(48000, 1, 2, 3);
+        s.aloita();
+        s.lopeta();
+        assertEquals(s.isOn(), false);
+    }
+
 }

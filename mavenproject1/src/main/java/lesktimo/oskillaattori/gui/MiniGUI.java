@@ -1,4 +1,4 @@
-package lesktimo.oskillaattori.GUI;
+package lesktimo.oskillaattori.gui;
 
 import java.awt.Container;
 import java.awt.Dimension;
@@ -122,29 +122,4 @@ public class MiniGUI implements Runnable {
     public JFrame getFrame() {
         return runko;
     }
-
-    public int getO1() {
-        return o1;
-    }
-
-    public int getO2() {
-        return o2;
-    }
-
-    public int getO3() {
-        return o3;
-    }
-
-    public void setO1(int o1) {
-        this.o1 = o1;
-    }
-
-    public void setO2(int o2) {
-        this.o2 = o2;
-    }
-
-    public void setO3(int o3) {
-        this.o3 = o3;
-    }
-
 }

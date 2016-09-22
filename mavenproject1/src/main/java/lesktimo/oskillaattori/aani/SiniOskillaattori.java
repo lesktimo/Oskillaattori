@@ -12,9 +12,6 @@ public class SiniOskillaattori extends SineOscillator {
     private double taajuus;
     private double voimakkuus;
 
-    
-    
-    
     public SiniOskillaattori(double taajuus, double voimakkuus) {
         
         this.taajuus = taajuus;

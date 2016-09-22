@@ -1,16 +1,14 @@
-package lesktimo.oskillaattori.GUI;
+package lesktimo.oskillaattori.gui;
 
 import com.jsyn.scope.AudioScope;
 import com.jsyn.unitgen.UnitOscillator;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -20,10 +18,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
-/**
- *
- * @author lesktimo
- */
 public class GUI implements Runnable {
 
     private JFrame runko;
@@ -32,31 +26,23 @@ public class GUI implements Runnable {
     private UnitOscillator osk1;
     private UnitOscillator osk2;
     private UnitOscillator osk3;
-    private double t1;
-    private double v1;
-    private double t2;
-    private double v2;
-    private double t3;
-    private double v3;
+    private double taajuus1, voimakkuus1, taajuus2, voimakkuus2, taajuus3, voimakkuus3;
 
     public GUI(Syntetisaattori syntikka, UnitOscillator osk1, UnitOscillator osk2, UnitOscillator osk3) {
-
         this.syntikka = syntikka;
         nakyma = new AudioScope(syntikka.getMasiina());
         this.osk1 = osk1;
         this.osk2 = osk2;
         this.osk3 = osk3;
-        t1 = osk1.frequency.get();
-        v1 = osk1.amplitude.get();
-        t2 = osk2.frequency.get();
-        v2 = osk2.amplitude.get();
-        t3 = osk3.frequency.get();
-        v3 = osk3.amplitude.get();
-
+        taajuus1 = osk1.frequency.get();
+        voimakkuus1 = osk1.amplitude.get();
+        taajuus2 = osk2.frequency.get();
+        voimakkuus2 = osk2.amplitude.get();
+        taajuus3 = osk3.frequency.get();
+        voimakkuus3 = osk3.amplitude.get();
     }
 
     public void run(Syntetisaattori syntikka) {
-
         this.syntikka = syntikka;
         runko = new JFrame("Masiina");
         runko.setPreferredSize(new Dimension(1200, 600));
@@ -64,117 +50,96 @@ public class GUI implements Runnable {
         luoKomponentit(runko.getContentPane(), nakyma);
         runko.pack();
         runko.setVisible(true);
-
     }
 
     private void luoKomponentit(Container sisalto, AudioScope aS) {
-
         GridLayout layout = new GridLayout(8, 1);
         sisalto.setLayout(layout);
-
         aS.addProbe(syntikka.getOsk1().output);
         aS.addProbe(syntikka.getOsk2().output);
         aS.addProbe(syntikka.getOsk3().output);
-
         aS.setViewMode(AudioScope.ViewMode.SPECTRUM);
-        aS.setTriggerMode(AudioScope.TriggerMode.NORMAL);
+        aS.setTriggerMode(AudioScope.TriggerMode.AUTO);
+        aS.setTriggerLevel(Double.MIN_VALUE);
         aS.getView().setControlsVisible(false);
-
         JButton aloita, lopeta;
         aloita = new JButton("Aloita");
         lopeta = new JButton("Lopeta");
-
         ButtonKuuntelija kuuntelija = new ButtonKuuntelija(syntikka, aloita, lopeta, aS);
         aloita.addActionListener(kuuntelija);
         lopeta.addActionListener(kuuntelija);
-
-        SpinnerNumberModel model1 = new SpinnerNumberModel(44000, 0, 792013, 1);
-        SpinnerNumberModel model2 = new SpinnerNumberModel(44000, 0, 792013, 1);
-        SpinnerNumberModel model3 = new SpinnerNumberModel(44000, 0, 792013, 1);
-
-        JLabel taajuusOsk1 = new JLabel("1. Oskillaattorin Taajuus: " + t1 + " Hz");
+        SpinnerNumberModel model1 = new SpinnerNumberModel(440.00, 0.00, 8000.00, 0.01);
+        SpinnerNumberModel model2 = new SpinnerNumberModel(440.00, 0.00, 8000.00, 0.01);
+        SpinnerNumberModel model3 = new SpinnerNumberModel(440.00, 0.00, 8000.00, 0.01);
+        JLabel taajuusOsk1 = new JLabel("1. Oskillaattorin Taajuus: " + taajuus1 + " Hz");
         JSpinner taajuusSpinner1 = new JSpinner(model1);
         JSlider taajuusSlider1 = new JSlider(JSlider.HORIZONTAL, 0, 790213, 44000);
-        JLabel voimakkuusOsk1 = new JLabel("1. Oskillaattorin Voimakkuus: " + v1);
+        JLabel voimakkuusOsk1 = new JLabel("1. Oskillaattorin Voimakkuus: " + voimakkuus1);
         JSlider voimakkuusSlider1 = new JSlider(JSlider.HORIZONTAL, 0, 10, 0);
-
-        JLabel taajuusOsk2 = new JLabel("2. Oskillaattorin Taajuus: " + t2 + " Hz");
+        JLabel taajuusOsk2 = new JLabel("2. Oskillaattorin Taajuus: " + taajuus2 + " Hz");
         JSpinner taajuusSpinner2 = new JSpinner(model2);
         JSlider taajuusSlider2 = new JSlider(JSlider.HORIZONTAL, 0, 790213, 44000);
-        JLabel voimakkuusOsk2 = new JLabel("2. Oskillaattorin Voimakkuus: " + v2);
+        JLabel voimakkuusOsk2 = new JLabel("2. Oskillaattorin Voimakkuus: " + voimakkuus2);
         JSlider voimakkuusSlider2 = new JSlider(JSlider.HORIZONTAL, 0, 10, 0);
-
-        JLabel taajuusOsk3 = new JLabel("3. Oskillaattori Taajuus: " + t3 + " Hz");
+        JLabel taajuusOsk3 = new JLabel("3. Oskillaattori Taajuus: " + taajuus3 + " Hz");
         JSpinner taajuusSpinner3 = new JSpinner(model3);
         JSlider taajuusSlider3 = new JSlider(JSlider.HORIZONTAL, 0, 790213, 44000);
-        JLabel voimakkuusOsk3 = new JLabel("3. Oskillaattorin Voimakkuus: " + v3);
+        JLabel voimakkuusOsk3 = new JLabel("3. Oskillaattorin Voimakkuus: " + voimakkuus3);
         JSlider voimakkuusSlider3 = new JSlider(JSlider.HORIZONTAL, 0, 10, 0);
-
-//      Elikkäs, tuli vähän ongelmia aluksi ChangeListenerin kanssa
-//      joten kokeilen aluksi luoda toiminnallisuuden tähän jonka jälkeen
-//      vasta ulkoistan sen omiin luokkiin/metodeihin
-//      TaajuusKuuntelija tK = new TaajuusKuuntelija(syntikka, taajuusSlider);
-//      VoimakkuusKuuntelija vK = new VoimakkuusKuuntelija(syntikka, voimakkuusSlider);
         taajuusSlider1.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 double muutos = taajuusSlider1.getValue() / 100;
                 syntikka.getOsk1().frequency.set(muutos);
-                t1 = muutos;
-                taajuusOsk1.setText("1. Oskillaattorin Taajuus: " + t1 + " Hz");
+                taajuus1 = muutos;
+                taajuusOsk1.setText("1. Oskillaattorin Taajuus: " + taajuus1 + " Hz");
             }
         });
-
         voimakkuusSlider1.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 double muutos = voimakkuusSlider1.getValue();
                 syntikka.getOsk1().amplitude.set(muutos / 100);
-                v1 = muutos;
-                voimakkuusOsk1.setText("1. Oskillaattorin Voimakkuus: " + v1);
+                voimakkuus1 = muutos;
+                voimakkuusOsk1.setText("1. Oskillaattorin Voimakkuus: " + voimakkuus1);
             }
         });
-
         taajuusSlider2.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 double muutos = taajuusSlider2.getValue() / 100;
                 syntikka.getOsk2().frequency.set(muutos);
-                t2 = muutos;
-                taajuusOsk2.setText("2. Oskillaattorin Taajuus: " + t2 + " Hz");
+                taajuus2 = muutos;
+                taajuusOsk2.setText("2. Oskillaattorin Taajuus: " + taajuus2 + " Hz");
             }
         });
-
         voimakkuusSlider2.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 double muutos = voimakkuusSlider2.getValue();
                 syntikka.getOsk2().amplitude.set(muutos / 100);
-                v2 = muutos;
-                voimakkuusOsk2.setText("2. Oskillaattorin Voimakkuus: " + v2);
+                voimakkuus2 = muutos;
+                voimakkuusOsk2.setText("2. Oskillaattorin Voimakkuus: " + voimakkuus2);
             }
         });
-
         taajuusSlider3.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 double muutos = taajuusSlider3.getValue() / 100;
                 syntikka.getOsk3().frequency.set(muutos);
-                t3 = muutos;
-                taajuusOsk3.setText("3. Oskillaattorin Taajuus: " + t3 + " Hz");
+                taajuus3 = muutos;
+                taajuusOsk3.setText("3. Oskillaattorin Taajuus: " + taajuus3 + " Hz");
             }
         });
-
         voimakkuusSlider3.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 double muutos = voimakkuusSlider3.getValue();
                 syntikka.getOsk3().amplitude.set(muutos / 100);
-                v3 = muutos;
-                voimakkuusOsk3.setText("3. Oskillaattorin Voimakkuus: " + v3);
+                voimakkuus3 = muutos;
+                voimakkuusOsk3.setText("3. Oskillaattorin Voimakkuus: " + voimakkuus3);
             }
         });
-
         sisalto.add(luoValikko1(aloita, lopeta));
         sisalto.add(luoValikko2(taajuusOsk1, taajuusSlider1, taajuusSpinner1));
         sisalto.add(luoValikko3(voimakkuusOsk1, voimakkuusSlider1));
@@ -182,9 +147,7 @@ public class GUI implements Runnable {
         sisalto.add(luoValikko3(voimakkuusOsk2, voimakkuusSlider2));
         sisalto.add(luoValikko2(taajuusOsk3, taajuusSlider3, taajuusSpinner3));
         sisalto.add(luoValikko3(voimakkuusOsk3, voimakkuusSlider3));
-
         sisalto.add(aS.getView());
-
     }
 
     private JPanel luoValikko1(JButton b1, JButton b2) {
@@ -205,9 +168,7 @@ public class GUI implements Runnable {
         JPanel paneeli = new JPanel(new GridLayout(1, 2));
         JPanel paneeli2 = new JPanel(new GridLayout(1, 2));
         JPanel paneeli3 = new JPanel(new GridLayout(4, 1));
-
         JLabel label = new JLabel("Lisää ominaisuuksia tähän");
-
         paneeli2.add(j);
         paneeli3.add(jSpin);
         paneeli3.add(label);
@@ -216,7 +177,6 @@ public class GUI implements Runnable {
         paneeli2.add(paneeli3);
         paneeli.add(paneeli2);
         paneeli.add(jS);
-
         return paneeli;
     }
 
@@ -227,12 +187,6 @@ public class GUI implements Runnable {
         return paneeli;
     }
 
-//    private JPanel valitseOskValikko(){
-//        JPanel paneeli = new JPanel(new GridLayout(2, 3));
-//        
-//        
-//        return paneeli;
-//    }
     public JFrame getFrame() {
         return runko;
     }
@@ -241,5 +195,4 @@ public class GUI implements Runnable {
     public void run() {
         run(syntikka);
     }
-
 }

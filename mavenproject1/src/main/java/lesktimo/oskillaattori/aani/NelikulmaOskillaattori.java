@@ -11,10 +11,7 @@ public class NelikulmaOskillaattori extends SquareOscillator {
     
     private double taajuus;
     private double voimakkuus;
-
-    
-    
-    
+   
     public NelikulmaOskillaattori(double taajuus, double voimakkuus) {
         
         this.taajuus = taajuus;
