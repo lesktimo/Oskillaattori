@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
 /**
@@ -22,8 +23,9 @@ public class JatkaKuuntelija implements ActionListener {
     private Syntetisaattori s;
     int o1, o2, o3;
     ButtonGroup oR1, oR2, oR3;
+    private JFrame runko;
 
-    public JatkaKuuntelija(JButton b, Syntetisaattori s, GUI g, int o1, int o2, int o3, ButtonGroup oR1, ButtonGroup oR2, ButtonGroup oR3) {
+    public JatkaKuuntelija(JButton b, Syntetisaattori s, GUI g, int o1, int o2, int o3, ButtonGroup oR1, ButtonGroup oR2, ButtonGroup oR3, JFrame runko) {
 
         this.g = g;
         this.s = s;
@@ -36,6 +38,8 @@ public class JatkaKuuntelija implements ActionListener {
         this.oR1 = oR1;
         this.oR2 = oR2;
         this.oR3 = oR3;
+
+        this.runko = runko;
 
     }
 
@@ -87,6 +91,8 @@ public class JatkaKuuntelija implements ActionListener {
         s = new Syntetisaattori(44100, o1, o2, o3);
         g = new GUI(s, s.getOsk1(), s.getOsk2(), s.getOsk3());
         g.run();
+        runko.hide();
+
     }
 
 }

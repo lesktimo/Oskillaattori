@@ -96,7 +96,7 @@ public class MiniGUI implements Runnable {
         oR3.add(saha3);
 
         JButton jatka = new JButton("Jatka");
-        jatka.addActionListener(new JatkaKuuntelija(jatka, syntikka, g, o1, o2, o3, oR1, oR2, oR3));
+        jatka.addActionListener(new JatkaKuuntelija(jatka, syntikka, g, o1, o2, o3, oR1, oR2, oR3, runko));
 
         sisalto.add(otsake);
 
