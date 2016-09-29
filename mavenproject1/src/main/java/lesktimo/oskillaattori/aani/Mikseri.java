@@ -11,16 +11,20 @@ import com.jsyn.unitgen.UnitOscillator;
 public class Mikseri {
 
     LineOut ulostulo1;
+    LineOut ulostulo2;
     Add linja1;
     Add linja2;
     Add linja3;
+    Add linja4;
 
     public Mikseri() {
 
         ulostulo1 = new LineOut();
+        ulostulo2 = new LineOut();
         linja1 = new Add();
         linja2 = new Add();
         linja3 = new Add();
+        linja4 = new Add();
     }
 
     protected void yhdista(UnitOscillator oskillaattori1, UnitOscillator oskillaattori2, UnitOscillator oskillaattori3) {
@@ -39,7 +43,6 @@ public class Mikseri {
         linja2.output.connect(0, ulostulo1.input, 1);
         linja3.output.connect(0, ulostulo1.input, 0);
         linja3.output.connect(0, ulostulo1.input, 1);
-
     }
 
     public void aloitaMikseri() {
@@ -52,6 +55,23 @@ public class Mikseri {
 
     public LineOut getUlostulo1() {
         return ulostulo1;
+
+    }
+
+    public void yhdistaPiiri(Hallintapiiri piiri){
+        piiri.ulos.connect(linja4.inputA);
+        linja4.output.connect(0, ulostulo2.input, 0);
+        linja4.output.connect(0, ulostulo2.input, 1);
+    }
+    
+    public void vaihdaYhteydet() {
+        if (ulostulo1.isEnabled()) {
+            ulostulo1.stop();
+            ulostulo2.start();
+        } else {
+            ulostulo1.start();
+            ulostulo2.stop();
+        }
 
     }
 

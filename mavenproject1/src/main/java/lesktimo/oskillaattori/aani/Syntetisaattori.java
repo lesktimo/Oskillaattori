@@ -18,6 +18,7 @@ public class Syntetisaattori {
     private UnitOscillator osk2;
     private UnitOscillator osk3;
     private Mikseri mikseri;
+    private Hallintapiiri hp;
     private boolean on;
     int o1, o2, o3;
 
@@ -29,12 +30,13 @@ public class Syntetisaattori {
         this.o1 = o1;
         this.o2 = o2;
         this.o3 = o3;
-        //määritellään syntikan moottori, mikseri ja oskillaattori
+        //määritellään syntikan moottori, mikseri ja oskillaattorit, ja hallintapiiri
         this.masiina = JSyn.createSynthesizer();
         this.mikseri = new Mikseri();
         this.osk1 = valitseOskillaattori(o1);
         this.osk2 = valitseOskillaattori(o2);
         this.osk3 = valitseOskillaattori(o3);
+        this.hp = new Hallintapiiri(osk1, osk2, osk3);
         //alustetaan syntikan äänikortti ja kanavat
         masiina.start(hz, AudioDeviceManager.USE_DEFAULT_DEVICE, kanavatSisaan, AudioDeviceManager.USE_DEFAULT_DEVICE,
                 kanavatUlos);
@@ -42,7 +44,9 @@ public class Syntetisaattori {
         masiina.add(osk1);
         masiina.add(osk2);
         masiina.add(osk3);
+        masiina.add(hp);
         masiina.add(mikseri.ulostulo1);
+        masiina.add(mikseri.ulostulo2);
         mikseri.yhdista(osk1, osk2, osk3);
 
     }
@@ -111,22 +115,26 @@ public class Syntetisaattori {
         return masiina;
     }
 
+    public Mikseri getMikseri() {
+        return mikseri;
+    }
+
     public static UnitOscillator valitseOskillaattori(int i) {
 
-        UnitOscillator osc = null;
+        UnitOscillator osk = null;
 
         switch (i) {
             case 1:
-                osc = new SiniOskillaattori(440.0, 0.0);
+                osk = new SiniOskillaattori(440.0, 0.0);
                 break;
             case 2:
-                osc = new NelikulmaOskillaattori(440.0, 0.0);
+                osk = new NelikulmaOskillaattori(440.0, 0.0);
                 break;
             case 3:
-                osc = new SahaOskillaattori(440.0, 0.0);
+                osk = new SahaOskillaattori(440.0, 0.0);
                 break;
         }
-        return osc;
+        return osk;
     }
 
 }

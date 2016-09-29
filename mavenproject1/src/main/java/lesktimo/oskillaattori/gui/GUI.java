@@ -14,8 +14,6 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.WindowConstants;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
 public class GUI implements Runnable {
@@ -29,6 +27,7 @@ public class GUI implements Runnable {
     private double taajuus1, voimakkuus1, taajuus2, voimakkuus2, taajuus3, voimakkuus3;
 
     public GUI(Syntetisaattori syntikka, UnitOscillator osk1, UnitOscillator osk2, UnitOscillator osk3) {
+        
         this.syntikka = syntikka;
         nakyma = new AudioScope(syntikka.getMasiina());
         this.osk1 = osk1;
@@ -50,7 +49,7 @@ public class GUI implements Runnable {
         luoKomponentit(runko.getContentPane(), nakyma);
         runko.pack();
         runko.setVisible(true);
-    }
+            }
 
     private void luoKomponentit(Container sisalto, AudioScope aS) {
         GridLayout layout = new GridLayout(8, 1);
@@ -86,60 +85,18 @@ public class GUI implements Runnable {
         JSlider taajuusSlider3 = new JSlider(JSlider.HORIZONTAL, 0, 790213, 44000);
         JLabel voimakkuusOsk3 = new JLabel("3. Oskillaattorin Voimakkuus: " + voimakkuus3);
         JSlider voimakkuusSlider3 = new JSlider(JSlider.HORIZONTAL, 0, 10, 0);
-        taajuusSlider1.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                double muutos = taajuusSlider1.getValue() / 100;
-                syntikka.getOsk1().frequency.set(muutos);
-                taajuus1 = muutos;
-                taajuusOsk1.setText("1. Oskillaattorin Taajuus: " + taajuus1 + " Hz");
-            }
-        });
-        voimakkuusSlider1.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                double muutos = voimakkuusSlider1.getValue();
-                syntikka.getOsk1().amplitude.set(muutos / 100);
-                voimakkuus1 = muutos;
-                voimakkuusOsk1.setText("1. Oskillaattorin Voimakkuus: " + voimakkuus1);
-            }
-        });
-        taajuusSlider2.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                double muutos = taajuusSlider2.getValue() / 100;
-                syntikka.getOsk2().frequency.set(muutos);
-                taajuus2 = muutos;
-                taajuusOsk2.setText("2. Oskillaattorin Taajuus: " + taajuus2 + " Hz");
-            }
-        });
-        voimakkuusSlider2.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                double muutos = voimakkuusSlider2.getValue();
-                syntikka.getOsk2().amplitude.set(muutos / 100);
-                voimakkuus2 = muutos;
-                voimakkuusOsk2.setText("2. Oskillaattorin Voimakkuus: " + voimakkuus2);
-            }
-        });
-        taajuusSlider3.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                double muutos = taajuusSlider3.getValue() / 100;
-                syntikka.getOsk3().frequency.set(muutos);
-                taajuus3 = muutos;
-                taajuusOsk3.setText("3. Oskillaattorin Taajuus: " + taajuus3 + " Hz");
-            }
-        });
-        voimakkuusSlider3.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                double muutos = voimakkuusSlider3.getValue();
-                syntikka.getOsk3().amplitude.set(muutos / 100);
-                voimakkuus3 = muutos;
-                voimakkuusOsk3.setText("3. Oskillaattorin Voimakkuus: " + voimakkuus3);
-            }
-        });
+        TaajuusSliderKuuntelija tSK1 = new TaajuusSliderKuuntelija(1, taajuusOsk1, taajuusSlider1, osk1);
+        taajuusSlider1.addChangeListener(tSK1);
+        TaajuusSliderKuuntelija tSK2 = new TaajuusSliderKuuntelija(2, taajuusOsk2, taajuusSlider2, osk2);
+        taajuusSlider2.addChangeListener(tSK2);
+        TaajuusSliderKuuntelija tSK3 = new TaajuusSliderKuuntelija(3, taajuusOsk3, taajuusSlider3, osk3);
+        taajuusSlider3.addChangeListener(tSK3);
+        VoimakkuusSliderKuuntelija vSK1 = new VoimakkuusSliderKuuntelija(1, voimakkuusOsk1, voimakkuusSlider1, osk1);
+        voimakkuusSlider1.addChangeListener(vSK1);
+        VoimakkuusSliderKuuntelija vSK2 = new VoimakkuusSliderKuuntelija(2, voimakkuusOsk2, voimakkuusSlider2, osk2);
+        voimakkuusSlider2.addChangeListener(vSK2);
+        VoimakkuusSliderKuuntelija vSK3 = new VoimakkuusSliderKuuntelija(3, voimakkuusOsk3, voimakkuusSlider3, osk3);
+        voimakkuusSlider3.addChangeListener(vSK3);
         sisalto.add(luoValikko1(aloita, lopeta));
         sisalto.add(luoValikko2(taajuusOsk1, taajuusSlider1, taajuusSpinner1));
         sisalto.add(luoValikko3(voimakkuusOsk1, voimakkuusSlider1));

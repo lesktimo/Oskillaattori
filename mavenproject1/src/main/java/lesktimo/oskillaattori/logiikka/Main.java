@@ -1,9 +1,13 @@
 package lesktimo.oskillaattori.logiikka;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
+import lesktimo.oskillaattori.aani.Hallintapiiri;
 import lesktimo.oskillaattori.gui.GUI;
 import lesktimo.oskillaattori.gui.MiniGUI;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
+
 
 /**
  *
@@ -11,9 +15,7 @@ import lesktimo.oskillaattori.aani.Syntetisaattori;
  */
 public class Main {
 
-    private static int o1, o2, o3;
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Syntetisaattori syntikka = null;
         GUI g = null;
@@ -21,6 +23,7 @@ public class Main {
         MiniGUI mG = new MiniGUI(syntikka, g);
 
         SwingUtilities.invokeLater(mG);
+
 
     }
 }
