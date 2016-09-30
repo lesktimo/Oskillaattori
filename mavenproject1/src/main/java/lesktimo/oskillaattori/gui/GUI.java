@@ -1,5 +1,8 @@
 package lesktimo.oskillaattori.gui;
 
+import lesktimo.oskillaattori.gui.kuuntelijat.TaajuusSliderKuuntelija;
+import lesktimo.oskillaattori.gui.kuuntelijat.VoimakkuusSliderKuuntelija;
+import lesktimo.oskillaattori.gui.kuuntelijat.ButtonKuuntelija;
 import com.jsyn.scope.AudioScope;
 import com.jsyn.unitgen.UnitOscillator;
 import java.awt.Container;
@@ -25,9 +28,9 @@ public class GUI implements Runnable {
     private UnitOscillator osk2;
     private UnitOscillator osk3;
     private double taajuus1, voimakkuus1, taajuus2, voimakkuus2, taajuus3, voimakkuus3;
+    private SoitinGUI sG;
 
     public GUI(Syntetisaattori syntikka, UnitOscillator osk1, UnitOscillator osk2, UnitOscillator osk3) {
-        
         this.syntikka = syntikka;
         nakyma = new AudioScope(syntikka.getMasiina());
         this.osk1 = osk1;
@@ -39,17 +42,18 @@ public class GUI implements Runnable {
         voimakkuus2 = osk2.amplitude.get();
         taajuus3 = osk3.frequency.get();
         voimakkuus3 = osk3.amplitude.get();
+        sG = null;
     }
 
-    public void run(Syntetisaattori syntikka) {
-        this.syntikka = syntikka;
+    @Override
+    public void run() {
         runko = new JFrame("Masiina");
         runko.setPreferredSize(new Dimension(1200, 600));
         runko.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         luoKomponentit(runko.getContentPane(), nakyma);
         runko.pack();
         runko.setVisible(true);
-            }
+    }
 
     private void luoKomponentit(Container sisalto, AudioScope aS) {
         GridLayout layout = new GridLayout(8, 1);
@@ -63,13 +67,13 @@ public class GUI implements Runnable {
         aS.getView().setControlsVisible(false);
         JButton aloita, lopeta;
         aloita = new JButton("Aloita");
-        lopeta = new JButton("Lopeta");
-        ButtonKuuntelija kuuntelija = new ButtonKuuntelija(syntikka, aloita, lopeta, aS);
+        lopeta = new JButton("Jatka");
+        ButtonKuuntelija kuuntelija = new ButtonKuuntelija(syntikka, aloita, lopeta, aS, sG, runko);
         aloita.addActionListener(kuuntelija);
         lopeta.addActionListener(kuuntelija);
-        SpinnerNumberModel model1 = new SpinnerNumberModel(440.00, 0.00, 8000.00, 0.01);
-        SpinnerNumberModel model2 = new SpinnerNumberModel(440.00, 0.00, 8000.00, 0.01);
-        SpinnerNumberModel model3 = new SpinnerNumberModel(440.00, 0.00, 8000.00, 0.01);
+        SpinnerNumberModel model1 = new SpinnerNumberModel(440.0, 0.00, 8000.00, 0.01);
+        SpinnerNumberModel model2 = new SpinnerNumberModel(440.0, 0.00, 8000.00, 0.01);
+        SpinnerNumberModel model3 = new SpinnerNumberModel(440.0, 0.00, 8000.00, 0.01);
         JLabel taajuusOsk1 = new JLabel("1. Oskillaattorin Taajuus: " + taajuus1 + " Hz");
         JSpinner taajuusSpinner1 = new JSpinner(model1);
         JSlider taajuusSlider1 = new JSlider(JSlider.HORIZONTAL, 0, 790213, 44000);
@@ -146,10 +150,5 @@ public class GUI implements Runnable {
 
     public JFrame getFrame() {
         return runko;
-    }
-
-    @Override
-    public void run() {
-        run(syntikka);
     }
 }

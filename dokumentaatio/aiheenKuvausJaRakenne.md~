@@ -1,8 +1,7 @@
 #Oskillaattori
 
 ##Kuvaus
-Pyrkimyksenä on luoda yksinkertainen oskillaattori javalla. Oskillaatori on eräänlainen nykymusiikissa käytetty soitin. 
-Muokkaamalla äänikortille lähetettävää signaalia ja liittämällä useampia elementtejä yhteen voidaan soittaa monimutkaisia ääniä.
+Pyrkimyksenä on luoda yksinkertainen oskillaattori javalla. Oskillaatori on eräänlainen nykymusiikissa käytetty soitin.  Ääntä voidaan muokata bittimanipulaatiolla.
 
 #####Käyttäjä:
 Musiikinharrastaja tai siitä kiinnostunut

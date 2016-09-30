@@ -1,24 +1,17 @@
-package lesktimo.oskillaattori.aani;
+package lesktimo.oskillaattori.aani.oskillaattorit;
 
-import com.jsyn.unitgen.SawtoothOscillator;
+import com.jsyn.unitgen.SquareOscillator;
 
-/**
- *
- * @author lesktimo
- */
-public class SahaOskillaattori extends SawtoothOscillator {
+public class NelikulmaOskillaattori extends SquareOscillator {
 
     private double taajuus;
     private double voimakkuus;
 
-    public SahaOskillaattori(double taajuus, double voimakkuus) {
-
+    public NelikulmaOskillaattori(double taajuus, double voimakkuus) {
         this.taajuus = taajuus;
         this.voimakkuus = voimakkuus;
-
         super.frequency.set(taajuus);
         super.amplitude.set(voimakkuus);
-
     }
 
     public void aloitaOskillaatori() {
@@ -46,5 +39,4 @@ public class SahaOskillaattori extends SawtoothOscillator {
     public double getVoimakkuus() {
         return voimakkuus;
     }
-
 }

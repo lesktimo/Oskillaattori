@@ -1,5 +1,6 @@
 package lesktimo.oskillaattori.gui;
 
+import lesktimo.oskillaattori.gui.kuuntelijat.JatkaKuuntelija;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -14,10 +15,6 @@ import javax.swing.JRadioButton;
 import javax.swing.WindowConstants;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
-/**
- *
- * @author lesktimo
- */
 public class MiniGUI implements Runnable {
 
     private JFrame runko;
@@ -26,10 +23,8 @@ public class MiniGUI implements Runnable {
     private GUI g;
 
     public MiniGUI(Syntetisaattori syntikka, GUI g) {
-
         this.g = g;
         this.syntikka = syntikka;
-
         o1 = 1;
         o2 = 2;
         o3 = 3;
@@ -37,18 +32,15 @@ public class MiniGUI implements Runnable {
 
     @Override
     public void run() {
-
         runko = new JFrame("Masiina");
         runko.setPreferredSize(new Dimension(400, 600));
         runko.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         luoKomponentit(runko.getContentPane());
         runko.pack();
         runko.setVisible(true);
-
     }
 
     public void luoKomponentit(Container sisalto) {
-
         GridLayout layout = new GridLayout(5, 1);
         sisalto.setLayout(layout);
 
@@ -65,14 +57,12 @@ public class MiniGUI implements Runnable {
         nelio1.setMnemonic(2);
         saha1 = new JRadioButton("Saha");
         saha1.setMnemonic(3);
-
         sini2 = new JRadioButton("Sini");
         sini2.setMnemonic(1);
         nelio2 = new JRadioButton("Neliö", true);
         nelio2.setMnemonic(2);
         saha2 = new JRadioButton("Saha");
         saha2.setMnemonic(3);
-
         sini3 = new JRadioButton("Sini");
         sini3.setMnemonic(1);
         nelio3 = new JRadioButton("Neliö");
@@ -84,12 +74,10 @@ public class MiniGUI implements Runnable {
         oR1.add(sini1);
         oR1.add(nelio1);
         oR1.add(saha1);
-
         ButtonGroup oR2 = new ButtonGroup();
         oR2.add(sini2);
         oR2.add(nelio2);
         oR2.add(saha2);
-
         ButtonGroup oR3 = new ButtonGroup();
         oR3.add(sini3);
         oR3.add(nelio3);
@@ -99,13 +87,10 @@ public class MiniGUI implements Runnable {
         jatka.addActionListener(new JatkaKuuntelija(jatka, syntikka, g, o1, o2, o3, oR1, oR2, oR3, runko));
 
         sisalto.add(otsake);
-
         sisalto.add(luoValikko(jL1, sini1, nelio1, saha1));
         sisalto.add(luoValikko(jL2, sini2, nelio2, saha2));
         sisalto.add(luoValikko(jL3, sini3, nelio3, saha3));
-
         sisalto.add(jatka);
-
     }
 
     public JPanel luoValikko(JLabel jL, JRadioButton b1, JRadioButton b2, JRadioButton b3) {

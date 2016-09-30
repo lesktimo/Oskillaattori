@@ -1,19 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package lesktimo.oskillaattori.gui;
+package lesktimo.oskillaattori.gui.kuuntelijat;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.JRadioButton;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
-/**
- *
- * @author lesktimo
- */
 public class RadioButtonKuuntelija implements ItemListener {
 
     private Syntetisaattori syntikka;
@@ -23,13 +14,11 @@ public class RadioButtonKuuntelija implements ItemListener {
     private int valinta;
 
     public RadioButtonKuuntelija(Syntetisaattori syntikka, JRadioButton sini, JRadioButton nelio, JRadioButton saha, int i) {
-
         this.syntikka = syntikka;
         this.sini = sini;
         this.nelio = nelio;
         this.saha = saha;
         this.valinta = i;
-
     }
 
     @Override
@@ -42,5 +31,4 @@ public class RadioButtonKuuntelija implements ItemListener {
             valinta = 3;
         }
     }
-
 }

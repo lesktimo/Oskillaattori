@@ -10,3 +10,4 @@ Päivä | Tunnit | Kuvaus
 21.09.2016 | 4h | Oskillaattorien valintamenu
 22.09.2016 | 2h | Pientä debugausta ja testien luontia
 29.09.2016 | 2h | Copypasten poistoa ja luokkien parantelua
+30.09.2016 | 5h | GUI:n jatkamista ja toiminnallisuuden lisäystä

@@ -5,6 +5,9 @@ package lesktimo.oskillaattori.aani;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import lesktimo.oskillaattori.aani.oskillaattorit.SiniOskillaattori;
+import lesktimo.oskillaattori.aani.oskillaattorit.SahaOskillaattori;
+import lesktimo.oskillaattori.aani.oskillaattorit.NelikulmaOskillaattori;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
