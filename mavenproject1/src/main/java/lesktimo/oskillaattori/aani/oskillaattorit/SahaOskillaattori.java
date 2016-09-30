@@ -2,11 +2,20 @@ package lesktimo.oskillaattori.aani.oskillaattorit;
 
 import com.jsyn.unitgen.SawtoothOscillator;
 
+/**
+ * Oskillaattori joka tuottaa sahalaitaista ääniaaltoa.
+ */
 public class SahaOskillaattori extends SawtoothOscillator {
 
     private double taajuus;
     private double voimakkuus;
 
+    /**
+     * Konstruktorille annetaan haluttu taajuus, sekä äänenvoimakkuus.
+     *
+     * @param taajuus taajuus, jolla oskillaattori sahalaita ilmenee
+     * @param voimakkuus äänenvoimakkuus
+     */
     public SahaOskillaattori(double taajuus, double voimakkuus) {
         this.taajuus = taajuus;
         this.voimakkuus = voimakkuus;

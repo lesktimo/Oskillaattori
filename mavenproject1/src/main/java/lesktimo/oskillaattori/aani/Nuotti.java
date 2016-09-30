@@ -1,5 +1,8 @@
 package lesktimo.oskillaattori.aani;
 
+/**
+ * Yksinkertainen enum-luokka kuvaamaan nuottien relaatiota A4-nuottiin.
+ */
 public enum Nuotti {
     C4(-9),
     CSHARP4(-8),

@@ -8,6 +8,11 @@ import javax.swing.JFrame;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 import lesktimo.oskillaattori.gui.GUI;
 
+/**
+ * Tämä kuuntelija seuraa aloitusvalikon jatka-nappia ja sen jälkeen käskee
+ * alustaa oskillaatorit ja alustaa seuraavan GUI:n.
+ *
+ */
 public class JatkaKuuntelija implements ActionListener {
 
     private JButton b;

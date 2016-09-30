@@ -6,6 +6,11 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/**
+ * TaajuusSliderKuuntelija muuttaa oskillaattoreiden taajuuksia
+ * muokkausvalikossa (GUI).
+ *
+ */
 public class TaajuusSliderKuuntelija implements ChangeListener {
 
     double muutos;

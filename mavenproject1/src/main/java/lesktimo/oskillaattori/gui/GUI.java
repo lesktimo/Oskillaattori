@@ -19,6 +19,10 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.WindowConstants;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
+/**
+ * Tässä GUI:ssa käyttäjä muokkaa oskillaattoreiden ominaisuuksia, kuten
+ * taajuutta.
+ */
 public class GUI implements Runnable {
 
     private JFrame runko;

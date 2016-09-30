@@ -10,6 +10,9 @@ import javax.swing.JFrame;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 import lesktimo.oskillaattori.gui.SoitinGUI;
 
+/**
+ * ButtonKuuntelija kuuntelee GUI:n nappeja.
+ */
 public class ButtonKuuntelija implements ActionListener {
 
     private Syntetisaattori syntikka;
@@ -28,6 +31,12 @@ public class ButtonKuuntelija implements ActionListener {
         this.vanhaRunko = runko;
     }
 
+    /**
+     * Mikäli käyttäjä painaa aloita, alkavat oskillaatorit soida, ja nappi
+     * vaihtuu pysäytä -napiksi, joka puolestaan pysäyttää oskillaarit.
+     * Jatka-nappi siirtyy SoitinGUI:hin.
+     *
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(aloita)) {

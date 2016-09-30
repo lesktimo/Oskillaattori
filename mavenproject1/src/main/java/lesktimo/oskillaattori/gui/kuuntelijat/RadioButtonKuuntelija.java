@@ -5,6 +5,12 @@ import java.awt.event.ItemListener;
 import javax.swing.JRadioButton;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
+/**
+ * Tämä kuuntelija seuraa käyttäjän tekemiä valintoja oskillaattoreita koskien
+ * alkuvalikossa.
+ *
+ * @author lesktimo
+ */
 public class RadioButtonKuuntelija implements ItemListener {
 
     private Syntetisaattori syntikka;

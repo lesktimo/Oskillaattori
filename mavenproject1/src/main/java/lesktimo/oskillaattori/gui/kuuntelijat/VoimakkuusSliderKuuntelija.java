@@ -6,6 +6,11 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/**
+ * VoimakkuusSliderKuuntelija muuttaa oskillaattoreiden voimakkuuksia
+ * muokkausvalikossa (GUI).
+ *
+ */
 public class VoimakkuusSliderKuuntelija implements ChangeListener {
 
     double muutos;

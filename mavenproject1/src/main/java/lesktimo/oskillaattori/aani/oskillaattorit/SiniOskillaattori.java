@@ -2,11 +2,20 @@ package lesktimo.oskillaattori.aani.oskillaattorit;
 
 import com.jsyn.unitgen.SineOscillator;
 
+/**
+ * Oskillaattori joka tuottaa pyöreää sini -ääniaaltoa.
+ */
 public class SiniOskillaattori extends SineOscillator {
 
     private double taajuus;
     private double voimakkuus;
 
+    /**
+     * Konstruktorille annetaan haluttu taajuus, sekä äänenvoimakkuus.
+     *
+     * @param taajuus taajuus, jolla oskillaattorin siniaalto ilmenee
+     * @param voimakkuus äänenvoimakkuus
+     */
     public SiniOskillaattori(double taajuus, double voimakkuus) {
         this.taajuus = taajuus;
         this.voimakkuus = voimakkuus;

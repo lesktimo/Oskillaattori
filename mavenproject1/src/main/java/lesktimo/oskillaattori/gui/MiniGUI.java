@@ -15,6 +15,11 @@ import javax.swing.JRadioButton;
 import javax.swing.WindowConstants;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
+/**
+ * Tämä on aloitusvalikko, jossa käyttäjä voi valita haluamansa oskillaattorit
+ * soittimeensa.
+ *
+ */
 public class MiniGUI implements Runnable {
 
     private JFrame runko;

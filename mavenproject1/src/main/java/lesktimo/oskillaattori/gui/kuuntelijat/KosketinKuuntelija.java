@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lesktimo.oskillaattori.gui.kuuntelijat;
 
 import java.awt.event.ActionEvent;
@@ -16,8 +11,10 @@ import lesktimo.oskillaattori.aani.Nuotti;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
 /**
+ * Kosketinkuuntelija seuraa koskettimiston soittoa, ja soittaa haluttuja
+ * nuotteja.
  *
- * @author lesktimo
+ * //KESKEN!!
  */
 public class KosketinKuuntelija implements ActionListener {
 
@@ -41,10 +38,10 @@ public class KosketinKuuntelija implements ActionListener {
         } catch (InterruptedException ex) {
             Logger.getLogger(KosketinKuuntelija.class.getName()).log(Level.SEVERE, null, ex);
         }
-        while(malli.isPressed()){
-        syntikka.noteOn(syntikka.getAllokaattori1(), 1, n.getI(), 100);
-        syntikka.noteOn(syntikka.getAllokaattori2(), 1, n.getI(), 100);
-        syntikka.noteOn(syntikka.getAllokaattori3(), 1, n.getI(), 100);
+        while (malli.isPressed() == true) {
+            syntikka.noteOn(syntikka.getAllokaattori1(), 1, n.getI(), 100);
+            syntikka.noteOn(syntikka.getAllokaattori2(), 1, n.getI(), 100);
+            syntikka.noteOn(syntikka.getAllokaattori3(), 1, n.getI(), 100);
         }
         syntikka.noteOff(syntikka.getAllokaattori1(), 1, n.getI(), 100);
         syntikka.noteOff(syntikka.getAllokaattori2(), 1, n.getI(), 100);

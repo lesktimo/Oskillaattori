@@ -2,11 +2,20 @@ package lesktimo.oskillaattori.aani.oskillaattorit;
 
 import com.jsyn.unitgen.SquareOscillator;
 
+/**
+ * Oskillaattori joka tuottaa nelikulmaista ääniaaltoa.
+ */
 public class NelikulmaOskillaattori extends SquareOscillator {
 
     private double taajuus;
     private double voimakkuus;
 
+    /**
+     * Konstruktorille annetaan haluttu taajuus, sekä äänenvoimakkuus.
+     *
+     * @param taajuus taajuus, jolla oskillaattori nelikulma ilmenee
+     * @param voimakkuus äänenvoimakkuus
+     */
     public NelikulmaOskillaattori(double taajuus, double voimakkuus) {
         this.taajuus = taajuus;
         this.voimakkuus = voimakkuus;

@@ -8,10 +8,14 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
+/**
+ * Tässä GUI:ssa käyttäjälle avautuu koskettimisto, joilla on mahdollista
+ * soittaa syntetisaattoria.
+ */
 public class SoitinGUI implements Runnable {
 
     private JFrame runko;
-    private PaneeliTesti paneeli;
+    private SoitinPaneeli paneeli;
     private Syntetisaattori syntikka;
     private AudioScope nakyma;
 
@@ -19,7 +23,7 @@ public class SoitinGUI implements Runnable {
         this.runko = new JFrame("Masiina");
         this.syntikka = syntikka;
         this.nakyma = nakyma;
-        paneeli = new PaneeliTesti(syntikka, nakyma);
+        paneeli = new SoitinPaneeli(syntikka, nakyma);
     }
 
     @Override
@@ -35,7 +39,7 @@ public class SoitinGUI implements Runnable {
         runko.setVisible(true);
     }
 
-    public void luoKomponentit(Container sisalto, AudioScope aS, PaneeliTesti paneeli) {
+    public void luoKomponentit(Container sisalto, AudioScope aS, SoitinPaneeli paneeli) {
         GridLayout layout = new GridLayout(1, 1);
         sisalto.setLayout(layout);
         sisalto.add(paneeli);
