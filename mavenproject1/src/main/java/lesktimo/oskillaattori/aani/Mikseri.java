@@ -13,13 +13,16 @@ public class Mikseri {
     Add linja3;
     Add linja4;
 
+
     public Mikseri() {
         ulostulo1 = new LineOut();
         ulostulo2 = new LineOut();
         linja1 = new Add();
         linja2 = new Add();
         linja3 = new Add();
-//      linja4 = new Add();
+        linja4 = new Add();
+    
+
     }
 
     protected void yhdista(UnitOscillator oskillaattori1, UnitOscillator oskillaattori2, UnitOscillator oskillaattori3) {
@@ -36,8 +39,9 @@ public class Mikseri {
         linja2.output.connect(0, ulostulo1.input, 1);
         linja3.output.connect(0, ulostulo1.input, 0);
         linja3.output.connect(0, ulostulo1.input, 1);
-//      linja4.output.connect(0, ulostulo1.input, 0);
-//      linja4.output.connect(0, ulostulo1.input, 1);
+        linja4.output.connect(0, ulostulo1.input, 0);
+        linja4.output.connect(0, ulostulo1.input, 1);
+ 
     }
 
     public void aloitaMikseri() {

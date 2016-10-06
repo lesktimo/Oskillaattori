@@ -37,7 +37,7 @@ public class PaneeliTesti extends javax.swing.JPanel {
     private JButton g5;
     private JButton gSharp4;
     private JButton gSharp5;
-    private AudioScope nakyma;
+    private AudioScope aS;
     private JPanel paneeli;
     private JPanel scopePaneeli;
     private JSeparator valiviiva;
@@ -47,11 +47,11 @@ public class PaneeliTesti extends javax.swing.JPanel {
 
     public PaneeliTesti(Syntetisaattori syntikka, AudioScope nakyma) {
         this.syntikka = syntikka;
-        this.nakyma = nakyma;
+        this.aS = nakyma;
         valkoiset = new Dimension(55, 110);
         mustat = new Dimension(65, 90);
         initComponents();
-        lisaaKuuntelijat(c4, cSharp4, d4, dSharp4, e4, f4, fSharp4, g4, gSharp4, a4, aSharp4, b4, c5, cSharp5, d5, dSharp5, e5, f5, fSharp5, g5, gSharp5, a5, aSharp5, b5);
+        lisaaKuuntelijat(c4, cSharp4, d4, dSharp4, e4, f4, fSharp4, g4, gSharp4, a4, aSharp4, b4, c5, cSharp5, d5, dSharp5, e5, f5, fSharp5, g5, gSharp5, a5, aSharp5, b5, aS);
     }
 
     private void initComponents() {
@@ -259,7 +259,7 @@ public class PaneeliTesti extends javax.swing.JPanel {
 
         javax.swing.GroupLayout scopePaneeliLayout = new javax.swing.GroupLayout(scopePaneeli);
         scopePaneeli.setLayout(scopePaneeliLayout);
-        scopePaneeli.add(nakyma.getView());
+        scopePaneeli.add(aS.getView());
         scopePaneeliLayout.setHorizontalGroup(
                 scopePaneeliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGap(0, 786, Short.MAX_VALUE)
@@ -392,30 +392,30 @@ public class PaneeliTesti extends javax.swing.JPanel {
     private void lisaaKuuntelijat(JButton c4, JButton cSharp4, JButton d4, JButton dSharp4, JButton e4,
             JButton f4, JButton fSharp4, JButton g4, JButton gSharp4, JButton a4, JButton aSharp4, JButton b4,
             JButton c5, JButton cSharp5, JButton d5, JButton dSharp5, JButton e5, JButton f5, JButton fSharp5,
-            JButton g5, JButton gSharp5, JButton a5, JButton aSharp5, JButton b5) {
-        c4.addActionListener(new KosketinKuuntelija(c4, syntikka, Nuotti.C4));
-        cSharp4.addActionListener(new KosketinKuuntelija(cSharp4, syntikka, Nuotti.CSHARP4));
-        d4.addActionListener(new KosketinKuuntelija(d4, syntikka, Nuotti.D4));
-        dSharp4.addActionListener(new KosketinKuuntelija(dSharp4, syntikka, Nuotti.DSHARP4));
-        e4.addActionListener(new KosketinKuuntelija(e4, syntikka, Nuotti.E4));
-        f4.addActionListener(new KosketinKuuntelija(f4, syntikka, Nuotti.F4));
-        fSharp4.addActionListener(new KosketinKuuntelija(fSharp4, syntikka, Nuotti.FSHARP4));
-        g4.addActionListener(new KosketinKuuntelija(g4, syntikka, Nuotti.G4));
-        gSharp4.addActionListener(new KosketinKuuntelija(gSharp4, syntikka, Nuotti.GSHARP4));
-        a4.addActionListener(new KosketinKuuntelija(a4, syntikka, Nuotti.A4));
-        aSharp4.addActionListener(new KosketinKuuntelija(aSharp4, syntikka, Nuotti.ASHARP4));
-        b4.addActionListener(new KosketinKuuntelija(b4, syntikka, Nuotti.B4));
-        c5.addActionListener(new KosketinKuuntelija(c5, syntikka, Nuotti.C5));
-        cSharp5.addActionListener(new KosketinKuuntelija(cSharp5, syntikka, Nuotti.CSHARP5));
-        d5.addActionListener(new KosketinKuuntelija(d5, syntikka, Nuotti.D5));
-        dSharp5.addActionListener(new KosketinKuuntelija(dSharp5, syntikka, Nuotti.DSHARP5));
-        e5.addActionListener(new KosketinKuuntelija(e5, syntikka, Nuotti.E5));
-        f5.addActionListener(new KosketinKuuntelija(f5, syntikka, Nuotti.F5));
-        fSharp5.addActionListener(new KosketinKuuntelija(fSharp5, syntikka, Nuotti.FSHARP5));
-        g5.addActionListener(new KosketinKuuntelija(g5, syntikka, Nuotti.G5));
-        gSharp5.addActionListener(new KosketinKuuntelija(gSharp5, syntikka, Nuotti.GSHARP5));
-        a5.addActionListener(new KosketinKuuntelija(a5, syntikka, Nuotti.A5));
-        aSharp5.addActionListener(new KosketinKuuntelija(aSharp5, syntikka, Nuotti.ASHARP5));
-        b5.addActionListener(new KosketinKuuntelija(b5, syntikka, Nuotti.B5));
+            JButton g5, JButton gSharp5, JButton a5, JButton aSharp5, JButton b5, AudioScope aS) {
+        c4.addActionListener(new KosketinKuuntelija(c4, syntikka, Nuotti.C4, aS));
+        cSharp4.addActionListener(new KosketinKuuntelija(cSharp4, syntikka, Nuotti.CSHARP4, aS));
+        d4.addActionListener(new KosketinKuuntelija(d4, syntikka, Nuotti.D4, aS));
+        dSharp4.addActionListener(new KosketinKuuntelija(dSharp4, syntikka, Nuotti.DSHARP4, aS));
+        e4.addActionListener(new KosketinKuuntelija(e4, syntikka, Nuotti.E4, aS));
+        f4.addActionListener(new KosketinKuuntelija(f4, syntikka, Nuotti.F4, aS));
+        fSharp4.addActionListener(new KosketinKuuntelija(fSharp4, syntikka, Nuotti.FSHARP4, aS));
+        g4.addActionListener(new KosketinKuuntelija(g4, syntikka, Nuotti.G4, aS));
+        gSharp4.addActionListener(new KosketinKuuntelija(gSharp4, syntikka, Nuotti.GSHARP4, aS));
+        a4.addActionListener(new KosketinKuuntelija(a4, syntikka, Nuotti.A4, aS));
+        aSharp4.addActionListener(new KosketinKuuntelija(aSharp4, syntikka, Nuotti.ASHARP4, aS));
+        b4.addActionListener(new KosketinKuuntelija(b4, syntikka, Nuotti.B4, aS));
+        c5.addActionListener(new KosketinKuuntelija(c5, syntikka, Nuotti.C5, aS));
+        cSharp5.addActionListener(new KosketinKuuntelija(cSharp5, syntikka, Nuotti.CSHARP5, aS));
+        d5.addActionListener(new KosketinKuuntelija(d5, syntikka, Nuotti.D5, aS));
+        dSharp5.addActionListener(new KosketinKuuntelija(dSharp5, syntikka, Nuotti.DSHARP5, aS));
+        e5.addActionListener(new KosketinKuuntelija(e5, syntikka, Nuotti.E5, aS));
+        f5.addActionListener(new KosketinKuuntelija(f5, syntikka, Nuotti.F5, aS));
+        fSharp5.addActionListener(new KosketinKuuntelija(fSharp5, syntikka, Nuotti.FSHARP5, aS));
+        g5.addActionListener(new KosketinKuuntelija(g5, syntikka, Nuotti.G5, aS));
+        gSharp5.addActionListener(new KosketinKuuntelija(gSharp5, syntikka, Nuotti.GSHARP5, aS));
+        a5.addActionListener(new KosketinKuuntelija(a5, syntikka, Nuotti.A5, aS));
+        aSharp5.addActionListener(new KosketinKuuntelija(aSharp5, syntikka, Nuotti.ASHARP5, aS));
+        b5.addActionListener(new KosketinKuuntelija(b5, syntikka, Nuotti.B5, aS));
     }
 }

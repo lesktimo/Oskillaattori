@@ -5,6 +5,7 @@
  */
 package lesktimo.oskillaattori.gui.kuuntelijat;
 
+import com.jsyn.scope.AudioScope;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
@@ -21,34 +22,34 @@ import lesktimo.oskillaattori.aani.Syntetisaattori;
  */
 public class KosketinKuuntelija implements ActionListener {
 
-    private final JButton kosketin;
     private final ButtonModel malli;
     private final Syntetisaattori syntikka;
     private final Nuotti n;
+    private final AudioScope aS;
 
-    public KosketinKuuntelija(JButton kosketin, Syntetisaattori syntikka, Nuotti n) {
+    public KosketinKuuntelija(JButton kosketin, Syntetisaattori syntikka, Nuotti n, AudioScope aS) {
         this.syntikka = syntikka;
-        this.kosketin = kosketin;
         this.n = n;
         malli = kosketin.getModel();
-
+        this.aS = aS;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
         try {
             syntikka.aloita();
+            aS.start();
         } catch (InterruptedException ex) {
             Logger.getLogger(KosketinKuuntelija.class.getName()).log(Level.SEVERE, null, ex);
         }
-        while(malli.isPressed()){
-        syntikka.noteOn(syntikka.getAllokaattori1(), 1, n.getI(), 100);
-        syntikka.noteOn(syntikka.getAllokaattori2(), 1, n.getI(), 100);
-        syntikka.noteOn(syntikka.getAllokaattori3(), 1, n.getI(), 100);
+        while (malli.isPressed()) {
+            syntikka.noteOn(n.getI(), 100);
+
         }
-        syntikka.noteOff(syntikka.getAllokaattori1(), 1, n.getI(), 100);
-        syntikka.noteOff(syntikka.getAllokaattori2(), 1, n.getI(), 100);
-        syntikka.noteOff(syntikka.getAllokaattori3(), 1, n.getI(), 100);
+        syntikka.noteOff(n.getI(), 100);
+
         syntikka.lopeta();
+        aS.stop();
     }
 }

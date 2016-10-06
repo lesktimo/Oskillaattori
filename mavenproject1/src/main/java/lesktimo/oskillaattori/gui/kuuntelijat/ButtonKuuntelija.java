@@ -47,7 +47,7 @@ public class ButtonKuuntelija implements ActionListener {
         } else if (e.getSource().equals(jatka)) {
             if (syntikka.isOn() == true) {
                 syntikka.lopeta();
-                aS.stop();
+                
             }
             syntikka.yhdistaAanet();
             sG = new SoitinGUI(syntikka, aS);

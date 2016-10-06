@@ -18,16 +18,18 @@ public class Syntetisaattori {
     private int kanavatUlos;
     private Synthesizer masiina;
     private UnitOscillator osk1, osk2, osk3;
-    private VoiceAllocator allokaattori1, allokaattori2, allokaattori3;
+    private VoiceAllocator allokaattori;
     private Mikseri mikseri;
     private boolean on;
     int o1, o2, o3;
+    int nuotit;
 
     //tässä voidaan määrittää moottorin framerate hertseinä
     public Syntetisaattori(int hz, int o1, int o2, int o3) {
         //stereo sisään ja ulos
         kanavatSisaan = 2;
         kanavatUlos = 2;
+        nuotit = 24;
         this.o1 = o1;
         this.o2 = o2;
         this.o3 = o3;
@@ -124,55 +126,33 @@ public class Syntetisaattori {
     }
 
     public void yhdistaAanet() {
-        SubtractiveSynthVoice[] voices1 = new SubtractiveSynthVoice[24];
-        for (int i = 0; i < 24; i++) {
-            SubtractiveSynthVoice voice1 = new SubtractiveSynthVoice();
-            masiina.add(voice1);
-            osk1.getOutput().connect(voice1.pitchModulation);
-            voice1.getOutput().connect(0, mikseri.ulostulo1.input, 0);
-            voice1.getOutput().connect(0, mikseri.ulostulo1.input, 1);
-            voices1[i] = voice1;
+        SubtractiveSynthVoice[] voices = new SubtractiveSynthVoice[nuotit];
+        for (int i = 0; i < nuotit; i++) {
+            SubtractiveSynthVoice voice = new SubtractiveSynthVoice();
+            masiina.add(voice);
+            osk1.getOutput().connect(voice.pitchModulation);
+            osk2.getOutput().connect(voice.pitchModulation);
+            osk3.getOutput().connect(voice.pitchModulation);
+            voice.getOutput().connect(0, mikseri.linja4.inputA, 0);
+//            voice1.getOutput().connect(0, mikseri.ulostulo1.input, 0);
+//            voice1.getOutput().connect(0, mikseri.ulostulo1.input, 1);
+            voices[i] = voice;
         }
-        SubtractiveSynthVoice[] voices2 = new SubtractiveSynthVoice[24];
-        for (int i = 0; i < 24; i++) {
-            SubtractiveSynthVoice voice2 = new SubtractiveSynthVoice();
-            masiina.add(voice2);
-            osk2.getOutput().connect(voice2.pitchModulation);
-            voice2.getOutput().connect(0, mikseri.ulostulo1.input, 0);
-            voice2.getOutput().connect(0, mikseri.ulostulo1.input, 1);
-            voices2[i] = voice2;
-        }
-        SubtractiveSynthVoice[] voices3 = new SubtractiveSynthVoice[24];
-        for (int i = 0; i < 24; i++) {
-            SubtractiveSynthVoice voice3 = new SubtractiveSynthVoice();
-            masiina.add(voice3);
-            osk3.getOutput().connect(voice3.pitchModulation);
-            voice3.getOutput().connect(0, mikseri.ulostulo1.input, 0);
-            voice3.getOutput().connect(0, mikseri.ulostulo1.input, 1);
-            voices3[i] = voice3;
-        }
-        allokaattori1 = new VoiceAllocator(voices1);
-        allokaattori2 = new VoiceAllocator(voices2);
-        allokaattori3 = new VoiceAllocator(voices3);
         
-        System.out.println(allokaattori1.getSynthesizer());
-        System.out.println(allokaattori2.getSynthesizer());
-        System.out.println(allokaattori3.getSynthesizer());
-        System.out.println(allokaattori1.getVoiceCount());
-        System.out.println(allokaattori2.getVoiceCount());
-        System.out.println(allokaattori3.getVoiceCount());
+        allokaattori = new VoiceAllocator(voices);
+       
     }
 
-    public void noteOff(VoiceAllocator allokaattori, int channel, int nuotinNumero, int voima) {
+    public void noteOff(int nuotinNumero, int voima) {
         allokaattori.noteOff(nuotinNumero, masiina.createTimeStamp());
     }
 
-    public void noteOn(VoiceAllocator allocator, int channel, int nuotinNumero, int voima) {
+    public void noteOn(int nuotinNumero, int voima) {
         double taajuus = kaannaSavelTaajuudeksi(nuotinNumero);
         double voimakkuus = voima / (4 * 128.0);
         TimeStamp timeStamp = masiina.createTimeStamp();
-        allocator.noteOn(nuotinNumero+9, taajuus, voimakkuus, timeStamp);
-        
+        allokaattori.noteOn(nuotinNumero + 9, taajuus, voimakkuus, timeStamp);
+
     }
 
     double kaannaSavelTaajuudeksi(int askel) {
@@ -180,15 +160,8 @@ public class Syntetisaattori {
         return a4 * Math.pow(2.0, (askel / 12.0));
     }
 
-    public VoiceAllocator getAllokaattori1() {
-        return allokaattori1;
+    public VoiceAllocator getAllokaattori() {
+        return allokaattori;
     }
 
-    public VoiceAllocator getAllokaattori2() {
-        return allokaattori2;
-    }
-
-    public VoiceAllocator getAllokaattori3() {
-        return allokaattori3;
-    }
 }
