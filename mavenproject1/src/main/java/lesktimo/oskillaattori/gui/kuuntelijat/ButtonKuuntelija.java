@@ -45,14 +45,18 @@ public class ButtonKuuntelija implements ActionListener {
                 aloita.setText("Aloita");
             }
         } else if (e.getSource().equals(jatka)) {
-            if (syntikka.isOn() == true) {
-                syntikka.lopeta();
-                
+//            if (syntikka.isOn() == true) {
+//                syntikka.lopeta();
+
+//            }
+            try {
+                syntikka.yhdistaAanet();
+                sG = new SoitinGUI(syntikka, aS);
+                sG.run();
+                vanhaRunko.hide();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ButtonKuuntelija.class.getName()).log(Level.SEVERE, null, ex);
             }
-            syntikka.yhdistaAanet();
-            sG = new SoitinGUI(syntikka, aS);
-            sG.run();
-            vanhaRunko.hide();
         }
     }
 }

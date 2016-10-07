@@ -22,7 +22,6 @@ public class Mikseri {
         linja3 = new Add();
         linja4 = new Add();
     
-
     }
 
     protected void yhdista(UnitOscillator oskillaattori1, UnitOscillator oskillaattori2, UnitOscillator oskillaattori3) {

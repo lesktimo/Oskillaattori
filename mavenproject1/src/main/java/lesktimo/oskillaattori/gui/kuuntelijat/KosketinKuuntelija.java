@@ -8,11 +8,9 @@ package lesktimo.oskillaattori.gui.kuuntelijat;
 import com.jsyn.scope.AudioScope;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ButtonModel;
 import javax.swing.JButton;
-
+import javax.swing.event.ChangeEvent;
 import lesktimo.oskillaattori.aani.Nuotti;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
@@ -23,6 +21,7 @@ import lesktimo.oskillaattori.aani.Syntetisaattori;
 public class KosketinKuuntelija implements ActionListener {
 
     private final ButtonModel malli;
+    private final JButton kosketin;
     private final Syntetisaattori syntikka;
     private final Nuotti n;
     private final AudioScope aS;
@@ -30,26 +29,25 @@ public class KosketinKuuntelija implements ActionListener {
     public KosketinKuuntelija(JButton kosketin, Syntetisaattori syntikka, Nuotti n, AudioScope aS) {
         this.syntikka = syntikka;
         this.n = n;
-        malli = kosketin.getModel();
+        this.kosketin = kosketin;
+        malli = this.kosketin.getModel();
         this.aS = aS;
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        try {
-            syntikka.aloita();
-            aS.start();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(KosketinKuuntelija.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        while (malli.isPressed()) {
-            syntikka.noteOn(n.getI(), 100);
+        aS.start();
+        malli.addChangeListener((ChangeEvent e1) -> {
+            if (malli.isPressed()) {
+                System.out.println(syntikka.isOn());
+                syntikka.noteOn(n.getI(), 100);
+                System.out.println("Painat " + n.toString());
 
-        }
-        syntikka.noteOff(n.getI(), 100);
-
-        syntikka.lopeta();
+            } else if (malli.isPressed() == false) {
+                syntikka.noteOff(n.getI());
+            }
+        });
         aS.stop();
     }
 }

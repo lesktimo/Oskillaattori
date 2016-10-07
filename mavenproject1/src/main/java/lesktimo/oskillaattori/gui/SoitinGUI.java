@@ -29,9 +29,6 @@ public class SoitinGUI implements Runnable {
         runko.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         luoKomponentit(runko.getContentPane(), nakyma, paneeli);
         runko.pack();
-        if (syntikka.isOn()) {
-            syntikka.lopeta();
-        }
         runko.setVisible(true);
     }
 
@@ -40,4 +37,6 @@ public class SoitinGUI implements Runnable {
         sisalto.setLayout(layout);
         sisalto.add(paneeli);
     }
+
+    
 }

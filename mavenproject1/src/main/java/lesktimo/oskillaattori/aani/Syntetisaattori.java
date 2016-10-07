@@ -125,26 +125,30 @@ public class Syntetisaattori {
         return osk;
     }
 
-    public void yhdistaAanet() {
+    public void yhdistaAanet() throws InterruptedException {
         SubtractiveSynthVoice[] voices = new SubtractiveSynthVoice[nuotit];
         for (int i = 0; i < nuotit; i++) {
             SubtractiveSynthVoice voice = new SubtractiveSynthVoice();
             masiina.add(voice);
-            osk1.getOutput().connect(voice.pitchModulation);
-            osk2.getOutput().connect(voice.pitchModulation);
-            osk3.getOutput().connect(voice.pitchModulation);
+            osk1.output.disconnectAll();
+            osk2.output.disconnectAll();
+            osk3.output.disconnectAll();
+            osk1.output.connect(voice.pitchModulation);
+            osk2.output.connect(voice.pitchModulation);
+            osk3.output.connect(voice.pitchModulation);
             voice.getOutput().connect(0, mikseri.linja4.inputA, 0);
 //            voice1.getOutput().connect(0, mikseri.ulostulo1.input, 0);
 //            voice1.getOutput().connect(0, mikseri.ulostulo1.input, 1);
             voices[i] = voice;
         }
-        
+
         allokaattori = new VoiceAllocator(voices);
-       
+        aloita();
+
     }
 
-    public void noteOff(int nuotinNumero, int voima) {
-        allokaattori.noteOff(nuotinNumero, masiina.createTimeStamp());
+    public void noteOff(int nuotinNumero) {
+        allokaattori.noteOff(nuotinNumero + 9, masiina.createTimeStamp());
     }
 
     public void noteOn(int nuotinNumero, int voima) {
