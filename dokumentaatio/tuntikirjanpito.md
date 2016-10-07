@@ -11,3 +11,6 @@ Päivä | Tunnit | Kuvaus
 22.09.2016 | 2h | Pientä debugausta ja testien luontia
 29.09.2016 | 2h | Copypasten poistoa ja luokkien parantelua
 30.09.2016 | 5h | GUI:n jatkamista ja toiminnallisuuden lisäystä
+30.09.2016 | 2h | Testausta, javadocia ja siistimistä
+06.10.2016 | 2h | Koskettimiston debuggausta
+07.10.2016 | 4h | Koskettimiston debuggausta ja javadocia

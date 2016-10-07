@@ -19,6 +19,10 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.WindowConstants;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
+/**
+ * Tässä GUI:ssa käyttäjä muokkaa oskillaattoreiden ominaisuuksia, kuten
+ * taajuutta.
+ */
 public class GUI implements Runnable {
 
     private JFrame runko;
@@ -30,6 +34,14 @@ public class GUI implements Runnable {
     private double taajuus1, voimakkuus1, taajuus2, voimakkuus2, taajuus3, voimakkuus3;
     private SoitinGUI sG;
 
+    /**
+     * Alustaa muokkaus-gui:n.
+     *
+     * @param syntikka Syntetisaattori, joka on käytössä.
+     * @param osk1 Ensimmäinen oskillaattori.
+     * @param osk2 Toinen oskillaattori.
+     * @param osk3 Kolmas oskillaattori.
+     */
     public GUI(Syntetisaattori syntikka, UnitOscillator osk1, UnitOscillator osk2, UnitOscillator osk3) {
         this.syntikka = syntikka;
         nakyma = new AudioScope(syntikka.getMasiina());

@@ -144,4 +144,40 @@ public class SyntetisaattoriTest {
         assertEquals(s.isOn(), false);
     }
 
+    @Test
+    public void kaantaaTaajuudenOikeinPlusYks() {
+        Syntetisaattori s = new Syntetisaattori(44100, 1, 2, 3);
+        double tarkistus;
+        int askel = 1;
+        tarkistus = s.kaannaSavelTaajuudeksi(askel);
+        assertEquals(tarkistus, 466.16, 0.01);
+    }
+
+    @Test
+    public void kaantaaTaajuudenOikeinMinusYks() {
+        Syntetisaattori s = new Syntetisaattori(44100, 1, 2, 3);
+        double tarkistus;
+        int askel = -1;
+        tarkistus = s.kaannaSavelTaajuudeksi(askel);
+        assertEquals(tarkistus, 415.30, 0.01);
+    }
+
+    @Test
+    public void kaantaaTaajuudenOikeinPlus13() {
+        Syntetisaattori s = new Syntetisaattori(44100, 1, 2, 3);
+        double tarkistus;
+        int askel = 13;
+        tarkistus = s.kaannaSavelTaajuudeksi(askel);
+        assertEquals(tarkistus, 932.33, 0.01);
+    }
+
+    @Test
+    public void kaantaaTaajuudenOikeinMinus13() {
+        Syntetisaattori s = new Syntetisaattori(44100, 1, 2, 3);
+        double tarkistus;
+        int askel = -13;
+        tarkistus = s.kaannaSavelTaajuudeksi(askel);
+        assertEquals(tarkistus, 207.65, 0.01);
+    }
+    
 }

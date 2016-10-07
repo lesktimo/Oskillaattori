@@ -40,58 +40,48 @@ public class MikseriTest {
 
     @Test
     public void yhdistaminenToimii1() {
-
         Mikseri m = new Mikseri();
         SiniOskillaattori osk1 = new SiniOskillaattori(440.0, 0.5);
         SiniOskillaattori osk2 = new SiniOskillaattori(440.0, 0.5);
         SiniOskillaattori osk3 = new SiniOskillaattori(440.0, 0.5);
         m.yhdista(osk1, osk2, osk3);
         assertEquals(m.linja1.inputA.isConnected(), true);
-
     }
 
     @Test
     public void yhdistaminenToimii2() {
-
         Mikseri m = new Mikseri();
         SiniOskillaattori osk1 = new SiniOskillaattori(440.0, 0.5);
         SiniOskillaattori osk2 = new SiniOskillaattori(440.0, 0.5);
         SiniOskillaattori osk3 = new SiniOskillaattori(440.0, 0.5);
         m.yhdista(osk1, osk2, osk3);
         assertEquals(m.linja2.inputA.isConnected(), true);
-
     }
 
     @Test
     public void yhdistaminenToimii3() {
-
         Mikseri m = new Mikseri();
         SiniOskillaattori osk1 = new SiniOskillaattori(440.0, 0.5);
         SiniOskillaattori osk2 = new SiniOskillaattori(440.0, 0.5);
         SiniOskillaattori osk3 = new SiniOskillaattori(440.0, 0.5);
         m.yhdista(osk1, osk2, osk3);
         assertEquals(m.linja3.inputA.isConnected(), true);
-
     }
 
     @Test
     public void yhdistaminenToimiiOutput() {
-
         Mikseri m = new Mikseri();
         SiniOskillaattori osk1 = new SiniOskillaattori(440.0, 0.5);
         SiniOskillaattori osk2 = new SiniOskillaattori(440.0, 0.5);
         SiniOskillaattori osk3 = new SiniOskillaattori(440.0, 0.5);
         m.yhdista(osk1, osk2, osk3);
         assertEquals(m.ulostulo1.input.isConnected(), true);
-
     }
 
     @Test
     public void getteriToimii() {
-
         Mikseri m = new Mikseri();
         assertEquals(m.getUlostulo1(), m.ulostulo1);
-
     }
     
 }

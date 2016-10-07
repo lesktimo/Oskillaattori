@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 11,
-             Errors: 0,
+      <title>File: 17,
+             Errors: 2,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.gui.RadioButtonKuuntelija.java">lesktimo/oskillaattori/gui/RadioButtonKuuntelija.java</a>
+                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.aani.oskillaattorit.SiniOskillaattori.java">lesktimo/oskillaattori/aani/oskillaattorit/SiniOskillaattori.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.aani.NelikulmaOskillaattori.java">lesktimo/oskillaattori/aani/NelikulmaOskillaattori.java</a>
+                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.gui.kuuntelijat.ButtonKuuntelija.java">lesktimo/oskillaattori/gui/kuuntelijat/ButtonKuuntelija.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.gui.MiniGUI.java">lesktimo/oskillaattori/gui/MiniGUI.java</a>
+                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.gui.kuuntelijat.TaajuusSliderKuuntelija.java">lesktimo/oskillaattori/gui/kuuntelijat/TaajuusSliderKuuntelija.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.aani.SahaOskillaattori.java">lesktimo/oskillaattori/aani/SahaOskillaattori.java</a>
+                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.aani.oskillaattorit.SahaOskillaattori.java">lesktimo/oskillaattori/aani/oskillaattorit/SahaOskillaattori.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.aani.SiniOskillaattori.java">lesktimo/oskillaattori/aani/SiniOskillaattori.java</a>
+                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.gui.SoitinGUI.java">lesktimo/oskillaattori/gui/SoitinGUI.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.gui.JatkaKuuntelija.java">lesktimo/oskillaattori/gui/JatkaKuuntelija.java</a>
+                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.gui.kuuntelijat.RadioButtonKuuntelija.java">lesktimo/oskillaattori/gui/kuuntelijat/RadioButtonKuuntelija.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.aani.oskillaattorit.NelikulmaOskillaattori.java">lesktimo/oskillaattori/aani/oskillaattorit/NelikulmaOskillaattori.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +158,77 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.gui.ButtonKuuntelija.java">lesktimo/oskillaattori/gui/ButtonKuuntelija.java</a>
+                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.gui.kuuntelijat.JatkaKuuntelija.java">lesktimo/oskillaattori/gui/kuuntelijat/JatkaKuuntelija.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.gui.kuuntelijat.KosketinKuuntelija.java">lesktimo/oskillaattori/gui/kuuntelijat/KosketinKuuntelija.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.gui.SoitinPaneeli.java">lesktimo/oskillaattori/gui/SoitinPaneeli.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.gui.MiniGUI.java">lesktimo/oskillaattori/gui/MiniGUI.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.aani.Nuotti.java">lesktimo/oskillaattori/aani/Nuotti.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#lesktimo.oskillaattori.gui.kuuntelijat.VoimakkuusSliderKuuntelija.java">lesktimo/oskillaattori/gui/kuuntelijat/VoimakkuusSliderKuuntelija.java</a>
                 </td>
                 <td>
                   0
@@ -167,7 +251,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  1
                 </td>
               </tr>
                           <tr>

@@ -8,6 +8,11 @@ import javax.swing.JFrame;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 import lesktimo.oskillaattori.gui.GUI;
 
+/**
+ * Tämä kuuntelija seuraa aloitusvalikon jatka-nappia ja sen jälkeen käskee
+ * alustaa oskillaatorit ja alustaa seuraavan GUI:n.
+ *
+ */
 public class JatkaKuuntelija implements ActionListener {
 
     private JButton b;
@@ -17,6 +22,23 @@ public class JatkaKuuntelija implements ActionListener {
     ButtonGroup oR1, oR2, oR3;
     private JFrame runko;
 
+    /**
+     * Alustaa JatkaKuuntelijan.
+     *
+     * @param b Kuuntelun alaisuudessa oleva JButton-nappi.
+     * @param s Käytössä oleva syntetisaattori.
+     * @param g Jatkettaessa luotava uusi GUI.
+     * @param o1 Ensimmäisen oskillaattorin valintaan vaikuttava muuttuja.
+     * @param o2 Toisen oskillaattorin valintaan vaikuttava muuttuja.
+     * @param o3 Kolmannen oskillaattorin valintaan vaikuttava muuttuja.
+     * @param oR1 Ensimmäisen oskillaattorin valintaan vaikuttava
+     * ButtonGroup-nappiryhmä.
+     * @param oR2 Toisen oskillaattorin valintaan vaikuttava
+     * ButtonGroup-nappiryhmä.
+     * @param oR3 Kolmannen oskillaattorin valintaan vaikuttava
+     * ButtonGroup-nappiryhmä.
+     * @param runko Vanha jatkaessa piilotettava GUI-runko.
+     */
     public JatkaKuuntelija(JButton b, Syntetisaattori s, GUI g, int o1, int o2, int o3, ButtonGroup oR1, ButtonGroup oR2, ButtonGroup oR3, JFrame runko) {
         this.g = g;
         this.s = s;

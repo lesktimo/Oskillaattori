@@ -6,6 +6,11 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/**
+ * VoimakkuusSliderKuuntelija muuttaa oskillaattoreiden voimakkuuksia
+ * muokkausvalikossa (GUI).
+ *
+ */
 public class VoimakkuusSliderKuuntelija implements ChangeListener {
 
     double muutos;
@@ -14,6 +19,16 @@ public class VoimakkuusSliderKuuntelija implements ChangeListener {
     JSlider slider;
     UnitOscillator osk;
 
+    /**
+     * Alustaa VoimakkuusSliderKuuntelijan.
+     *
+     * @param oskillaattorinNumero Oskillaattorin järjestysnumero mikä näytetään
+     * GUI:ssa.
+     * @param voimakkuusTeksti Teksti, joka kertoo oskillaatorin
+     * järjestysnumeron ja muuttuvan ääneenvoimakkuuden.
+     * @param slider Slider jota VoimakkuusSliderKuuntelija kuuntelee.
+     * @param osk Muokattavana oleva oskillaattori.
+     */
     public VoimakkuusSliderKuuntelija(int oskillaattorinNumero, JLabel voimakkuusTeksti, JSlider slider, UnitOscillator osk) {
         this.muutos = 0;
         this.oskillaattorinNumero = oskillaattorinNumero;

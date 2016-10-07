@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lesktimo.oskillaattori.gui.kuuntelijat;
 
 import com.jsyn.scope.AudioScope;
@@ -15,8 +10,8 @@ import lesktimo.oskillaattori.aani.Nuotti;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
 /**
- *
- * @author lesktimo
+ * Kosketinkuuntelija seuraa koskettimiston soittoa, ja soittaa haluttuja
+ * nuotteja.
  */
 public class KosketinKuuntelija implements ActionListener {
 
@@ -26,6 +21,15 @@ public class KosketinKuuntelija implements ActionListener {
     private final Nuotti n;
     private final AudioScope aS;
 
+    /**
+     * Alustaa KosketinKuuntelijan.
+     *
+     * @param kosketin Kyseessä oleva koskettimiston yksittäinen kosketin.
+     * @param syntikka Käytössä oleva syntetisaattori.
+     * @param n Kyseessä olevaa kosketinta kuvaava nuotti, jota käytetään
+     * taajuudeen laskemisessa.
+     * @param aS Waveform-näkymä.
+     */
     public KosketinKuuntelija(JButton kosketin, Syntetisaattori syntikka, Nuotti n, AudioScope aS) {
         this.syntikka = syntikka;
         this.n = n;

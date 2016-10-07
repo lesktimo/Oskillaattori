@@ -15,6 +15,11 @@ import javax.swing.JRadioButton;
 import javax.swing.WindowConstants;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
+/**
+ * Tämä on aloitusvalikko, jossa käyttäjä voi valita haluamansa oskillaattorit
+ * soittimeensa.
+ *
+ */
 public class MiniGUI implements Runnable {
 
     private JFrame runko;
@@ -22,6 +27,12 @@ public class MiniGUI implements Runnable {
     private Syntetisaattori syntikka;
     private GUI g;
 
+    /**
+     * Alustaa valinta-gui:n.
+     *
+     * @param syntikka Käytössä oleva syntetisaattori.
+     * @param g Eteenpäin heitettävä muokkaus-gui.
+     */
     public MiniGUI(Syntetisaattori syntikka, GUI g) {
         this.g = g;
         this.syntikka = syntikka;
@@ -40,6 +51,11 @@ public class MiniGUI implements Runnable {
         runko.setVisible(true);
     }
 
+    /**
+     * Alustaa kaikki komponentit GUI:lle.
+     *
+     * @param sisalto GUI:n sisältö.
+     */
     public void luoKomponentit(Container sisalto) {
         GridLayout layout = new GridLayout(5, 1);
         sisalto.setLayout(layout);
@@ -93,6 +109,15 @@ public class MiniGUI implements Runnable {
         sisalto.add(jatka);
     }
 
+    /**
+     * Luo valinta-ruudun.
+     *
+     * @param jL Otsikko
+     * @param b1 valinta-nappi
+     * @param b2 valinta-nappi
+     * @param b3 valinta-nappi
+     * @return palauttaa luodun kokonaisuuden.
+     */
     public JPanel luoValikko(JLabel jL, JRadioButton b1, JRadioButton b2, JRadioButton b3) {
         JPanel jP1 = new JPanel(new GridLayout(2, 1));
         JPanel jP2 = new JPanel(new GridLayout(1, 3));
