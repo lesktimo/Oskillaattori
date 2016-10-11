@@ -36,22 +36,25 @@ public class KosketinKuuntelija implements ActionListener {
         this.kosketin = kosketin;
         malli = this.kosketin.getModel();
         this.aS = aS;
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        aS.start();
         malli.addChangeListener((ChangeEvent e1) -> {
             if (malli.isPressed()) {
-                System.out.println(syntikka.isOn());
+
                 syntikka.noteOn(n.getI(), 100);
-                System.out.println("Painat " + n.toString());
 
             } else if (malli.isPressed() == false) {
                 syntikka.noteOff(n.getI());
             }
         });
-        aS.stop();
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (malli.isPressed()) {
+            System.out.println("Syntikka on päällä: " + syntikka.isOn());
+            System.out.println("Painat " + n.toString() + " nuottia");
+//        } else if (malli.isPressed() == false) {
+//
+        }
     }
 }

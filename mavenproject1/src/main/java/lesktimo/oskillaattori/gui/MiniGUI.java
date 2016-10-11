@@ -4,8 +4,6 @@ import lesktimo.oskillaattori.gui.kuuntelijat.JatkaKuuntelija;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;

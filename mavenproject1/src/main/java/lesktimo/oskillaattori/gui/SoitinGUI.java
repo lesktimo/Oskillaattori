@@ -25,10 +25,10 @@ public class SoitinGUI implements Runnable {
      * @param syntikka Käytössä oleva syntetisaattori
      * @param nakyma Waveform-näkymä
      */
-    public SoitinGUI(Syntetisaattori syntikka, AudioScope nakyma) {
+    public SoitinGUI(Syntetisaattori syntikka) {
         this.runko = new JFrame("Masiina");
         this.syntikka = syntikka;
-        this.nakyma = nakyma;
+        this.nakyma = new AudioScope(this.syntikka.getMasiina());
         paneeli = new SoitinPaneeli(syntikka, nakyma);
     }
 

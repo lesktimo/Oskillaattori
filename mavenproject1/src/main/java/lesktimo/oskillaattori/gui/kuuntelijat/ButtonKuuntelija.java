@@ -70,7 +70,7 @@ public class ButtonKuuntelija implements ActionListener {
 //            }
             try {
                 syntikka.yhdistaAanet();
-                sG = new SoitinGUI(syntikka, aS);
+                sG = new SoitinGUI(syntikka);
                 sG.run();
                 vanhaRunko.hide();
             } catch (InterruptedException ex) {

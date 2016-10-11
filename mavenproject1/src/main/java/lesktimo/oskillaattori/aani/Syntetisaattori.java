@@ -24,6 +24,7 @@ public class Syntetisaattori {
     private VoiceAllocator allokaattori;
     private Mikseri mikseri;
     private boolean on;
+    private SubtractiveSynthVoice[] voices;
 
     int o1, o2, o3;
     int nuotit;
@@ -166,7 +167,7 @@ public class Syntetisaattori {
      * @throws InterruptedException Mikäli aloita-metodi keskeytyy.
      */
     public void yhdistaAanet() throws InterruptedException {
-        SubtractiveSynthVoice[] voices = new SubtractiveSynthVoice[nuotit];
+        voices = new SubtractiveSynthVoice[nuotit];
         for (int i = 0; i < nuotit; i++) {
             SubtractiveSynthVoice voice = new SubtractiveSynthVoice();
             masiina.add(voice);
@@ -178,8 +179,9 @@ public class Syntetisaattori {
             osk3.output.connect(voice.pitchModulation);
             voice.getOutput().connect(0, mikseri.linja4.inputA, 0);
             voices[i] = voice;
+        
         }
-
+        
         allokaattori = new VoiceAllocator(voices);
         aloita();
 
@@ -225,4 +227,8 @@ public class Syntetisaattori {
         return allokaattori;
     }
 
+    public SubtractiveSynthVoice[] getVoices() {
+        return voices;
+    }
+       
 }
