@@ -25,11 +25,8 @@ public class Syntetisaattori {
     private Mikseri mikseri;
     private boolean on;
     private SubtractiveSynthVoice[] voices;
-
     int o1, o2, o3;
     int nuotit;
-
-    private final int max;
 
     //tässä voidaan määrittää moottorin framerate hertseinä
     /**
@@ -51,7 +48,6 @@ public class Syntetisaattori {
         this.o1 = o1;
         this.o2 = o2;
         this.o3 = o3;
-        max = 24;
         //määritellään syntikan moottori, mikseri ja oskillaattorit, ja hallintapiiri
         this.masiina = JSyn.createSynthesizer();
         this.mikseri = new Mikseri();
@@ -168,21 +164,30 @@ public class Syntetisaattori {
      */
     public void yhdistaAanet() throws InterruptedException {
         voices = new SubtractiveSynthVoice[nuotit];
+        osk1.output.disconnectAll();
+        osk2.output.disconnectAll();
+        osk3.output.disconnectAll();
         for (int i = 0; i < nuotit; i++) {
             SubtractiveSynthVoice voice = new SubtractiveSynthVoice();
-            masiina.add(voice);
-            osk1.output.disconnectAll();
-            osk2.output.disconnectAll();
-            osk3.output.disconnectAll();
+
+            voice.addPort(osk1.output);
+            voice.addPort(osk2.output);
+            voice.addPort(osk3.output);
             osk1.output.connect(voice.pitchModulation);
             osk2.output.connect(voice.pitchModulation);
             osk3.output.connect(voice.pitchModulation);
+
+            masiina.add(voice);
+
             voice.getOutput().connect(0, mikseri.linja4.inputA, 0);
             voices[i] = voice;
-        
+            osk1.output.disconnectAll();
+            osk2.output.disconnectAll();
+            osk3.output.disconnectAll();
         }
-        
+
         allokaattori = new VoiceAllocator(voices);
+
         aloita();
 
     }
@@ -230,5 +235,5 @@ public class Syntetisaattori {
     public SubtractiveSynthVoice[] getVoices() {
         return voices;
     }
-       
+
 }

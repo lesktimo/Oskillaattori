@@ -11,16 +11,16 @@ Musiikinharrastaja tai siitä kiinnostunut
 -Käyttäjä voi luoda ja muokata ääntä käyttöliittymän kautta
 -Käyttäjä voi soittaa luomaansa ääntä koskettimilla
 
-##Rakennekuvaus
-#####Luokkakaavio
+
+
+#####Rakennekuvaus
 ![Alt text](Luokkakaavio.png "Luokkakaavio")
 Ohjelma sisältää Syntetisaattorin joka alustaa muut käytettävät käytännön luokat, ja hoitaa 
 soittamisen. Mikseri pitää sisällään linjoja, joita pitkin äänidata kulkee halutusta lähteestä
 haluttuun päämäärään eli loppujen lopuksi äänikortin outputtiin. Oskilaattorit itsessään luovat
 erilaisia aaltomuotoja olevaa ääntä eri taajuuksilta luoden sävelkorkeuseroja, joita voidaan käyttää nuotteina ja soittaa GUIn kautta käyttäjälle.
-#####Sekvenssikaavio
 ![Alt text](Sekvenssikaavio.png "Sekvenssikaavio")
 
-##Käyttöohje
+#####Käyttöohje
 Aluksi käyttäjä valitsee kolmelle oskillaattorille aaltomuodot kolmesta vaihtoehdosta.
 Tämän jälkeen käyttäjä voi halutessaan muokata oskillaattoreiden taajuuksia ja äänenvoimakkuutta. Sen jälkeen käyttäjä pääsee soittamaan koskettimistolta luomaansa ääntä.
