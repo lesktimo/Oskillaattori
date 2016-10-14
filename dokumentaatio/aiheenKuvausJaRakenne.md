@@ -14,10 +14,12 @@ Musiikinharrastaja tai siitä kiinnostunut
 ##Rakennekuvaus
 #####Luokkakaavio
 ![Alt text](Luokkakaavio.png "Luokkakaavio")
+
 Ohjelma sisältää Syntetisaattorin joka alustaa muut käytettävät käytännön luokat, ja hoitaa 
 soittamisen. Mikseri pitää sisällään linjoja, joita pitkin äänidata kulkee halutusta lähteestä
 haluttuun päämäärään eli loppujen lopuksi äänikortin outputtiin. Oskilaattorit itsessään luovat
 erilaisia aaltomuotoja olevaa ääntä eri taajuuksilta luoden sävelkorkeuseroja, joita voidaan käyttää nuotteina ja soittaa GUIn kautta käyttäjälle.
+
 #####Sekvenssikaavio
 ![Alt text](Sekvenssikaavio.png "Sekvenssikaavio")
 
