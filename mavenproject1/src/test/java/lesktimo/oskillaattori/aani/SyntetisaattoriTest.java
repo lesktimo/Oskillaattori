@@ -179,5 +179,5 @@ public class SyntetisaattoriTest {
         tarkistus = s.kaannaSavelTaajuudeksi(askel);
         assertEquals(tarkistus, 207.65, 0.01);
     }
-    
+
 }

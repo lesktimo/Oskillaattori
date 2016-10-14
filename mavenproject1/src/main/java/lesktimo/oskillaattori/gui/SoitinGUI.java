@@ -23,7 +23,7 @@ public class SoitinGUI implements Runnable {
      * Alustaa soitin-näkymän.
      *
      * @param syntikka Käytössä oleva syntetisaattori
-     * @param nakyma Waveform-näkymä
+     *
      */
     public SoitinGUI(Syntetisaattori syntikka) {
         this.runko = new JFrame("Masiina");
