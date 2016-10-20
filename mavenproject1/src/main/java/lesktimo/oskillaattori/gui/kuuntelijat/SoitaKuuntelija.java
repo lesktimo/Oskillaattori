@@ -7,10 +7,8 @@ package lesktimo.oskillaattori.gui.kuuntelijat;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import javax.swing.JToggleButton;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import lesktimo.oskillaattori.aani.apu.Lukija;
