@@ -4,6 +4,7 @@ import javax.swing.SwingUtilities;
 import lesktimo.oskillaattori.gui.GUI;
 import lesktimo.oskillaattori.gui.MiniGUI;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
+import lesktimo.oskillaattori.aani.apu.Nuotti;
 
 public class Main {
 

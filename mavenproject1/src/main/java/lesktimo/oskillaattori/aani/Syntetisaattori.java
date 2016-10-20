@@ -10,6 +10,9 @@ import com.jsyn.instruments.SubtractiveSynthVoice;
 import com.jsyn.unitgen.UnitOscillator;
 import com.jsyn.util.VoiceAllocator;
 import com.softsynth.shared.time.TimeStamp;
+import java.util.concurrent.TimeUnit;
+import lesktimo.oskillaattori.aani.apu.Lukija;
+import lesktimo.oskillaattori.aani.apu.Tempo;
 
 /**
  * Syntetisaattori-luokka sitoo yhteen koko toiminnallisuuden, oskillaattorit ja
@@ -27,6 +30,8 @@ public class Syntetisaattori {
     private SubtractiveSynthVoice[] voices;
     int o1, o2, o3;
     int nuotit;
+    private Lukija lukija;
+    private Tempo tempo;
 
     //tässä voidaan määrittää moottorin framerate hertseinä
     /**
@@ -64,6 +69,8 @@ public class Syntetisaattori {
         masiina.add(mikseri.ulostulo1);
         masiina.add(mikseri.ulostulo2);
         mikseri.yhdista(osk1, osk2, osk3);
+        lukija = new Lukija(this);
+        tempo = new Tempo();
     }
 
     /**
@@ -214,7 +221,6 @@ public class Syntetisaattori {
         double voimakkuus = voima / (4 * 128.0);
         TimeStamp timeStamp = masiina.createTimeStamp();
         allokaattori.noteOn(nuotinNumero + 9, taajuus, voimakkuus, timeStamp);
-
     }
 
     /**
@@ -234,6 +240,24 @@ public class Syntetisaattori {
 
     public SubtractiveSynthVoice[] getVoices() {
         return voices;
+    }
+
+    public void soitaLuettuNuotti(int nuotinNumero, String pituus, boolean paalla) throws InterruptedException {
+        if (paalla == true) {
+            noteOn(nuotinNumero, 100);
+            TimeUnit.SECONDS.sleep(tempo.laskeNuotinPituus(pituus));
+            noteOff(nuotinNumero);
+        } else if (paalla == false) {
+            allokaattori.allNotesOff(masiina.createTimeStamp());
+        }
+    }
+
+    public Tempo getTempo() {
+        return tempo;
+    }
+
+    public Lukija getLukija() {
+        return lukija;
     }
 
 }

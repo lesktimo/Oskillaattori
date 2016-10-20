@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.event.ChangeEvent;
-import lesktimo.oskillaattori.aani.Nuotti;
+import lesktimo.oskillaattori.aani.apu.Nuotti;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
 /**
@@ -53,8 +53,6 @@ public class KosketinKuuntelija implements ActionListener {
         if (malli.isPressed()) {
             System.out.println("Syntikka on päällä: " + syntikka.isOn());
             System.out.println("Painat " + n.toString() + " nuottia");
-//        } else if (malli.isPressed() == false) {
-//
         }
     }
 }

@@ -11,9 +11,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JSlider;
+import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.SwingConstants;
-import lesktimo.oskillaattori.aani.Nuotti;
+import lesktimo.oskillaattori.aani.apu.Nuotti;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 import lesktimo.oskillaattori.gui.kuuntelijat.KosketinKuuntelija;
 
@@ -28,7 +29,7 @@ public class SoitinPaneeli extends javax.swing.JPanel {
             gSharp4, gSharp5;
     private AudioScope aS;
     private JPanel paneeli;
-    private JPanel scopePaneeli;
+    private JPanel syotePaneeli;
     private JSeparator valiviiva;
     private JSlider pitchBendSlider;
     private final Dimension valkoiset;
@@ -36,6 +37,10 @@ public class SoitinPaneeli extends javax.swing.JPanel {
     private SubtractiveSynthVoice[] voices;
     private InputMap inputs;
     private ActionMap actions;
+    private JTextField syotekentta;
+    private Color tumma;
+    private Color vaalea;
+    private SyotePaneeli sP;
 
     /**
      * Alustaa SoitinPaneelin.
@@ -48,21 +53,24 @@ public class SoitinPaneeli extends javax.swing.JPanel {
         this.aS = nakyma;
         valkoiset = new Dimension(55, 110);
         mustat = new Dimension(65, 90);
+        tumma = new Color(46, 46, 46);
+        vaalea = new Color(205, 205, 205);
         initComponents();
         lisaaKuuntelijat(c4, cSharp4, d4, dSharp4, e4, f4, fSharp4, g4, gSharp4,
                 a4, aSharp4, b4, c5, cSharp5, d5, dSharp5, e5, f5, fSharp5, g5,
                 gSharp5, a5, aSharp5, b5, aS);
+        
     }
 
     private void initComponents() {
-        voices = syntikka.getVoices();
-        for (SubtractiveSynthVoice voice : voices) {
-            aS.addProbe(voice.getOutput());
-        }
-        aS.setViewMode(AudioScope.ViewMode.SPECTRUM);
-        aS.setTriggerMode(AudioScope.TriggerMode.AUTO);
-        aS.setTriggerLevel(Double.MIN_VALUE);
-        aS.getView().setControlsVisible(false);
+//        voices = syntikka.getVoices();
+//        for (SubtractiveSynthVoice voice : voices) {
+//            aS.addProbe(voice.getOutput());
+//        }
+//        aS.setViewMode(AudioScope.ViewMode.SPECTRUM);
+//        aS.setTriggerMode(AudioScope.TriggerMode.AUTO);
+//        aS.setTriggerLevel(Double.MIN_VALUE);
+//        aS.getView().setControlsVisible(false);
 
         paneeli = new JPanel();
         valiviiva = new JSeparator();
@@ -94,7 +102,7 @@ public class SoitinPaneeli extends javax.swing.JPanel {
         b4 = new JButton();
 
         pitchBendSlider = new JSlider();
-        scopePaneeli = new JPanel();
+        sP = new SyotePaneeli(syntikka);
 
         c5.setText("C5");
         c5.setMaximumSize(valkoiset);
@@ -102,8 +110,8 @@ public class SoitinPaneeli extends javax.swing.JPanel {
         c5.setPreferredSize(valkoiset);
         c5.setVerticalTextPosition(SwingConstants.TOP);
 
-        cSharp5.setBackground(new Color(46, 46, 46));
-        cSharp5.setForeground(new Color(205, 205, 205));
+        cSharp5.setBackground(tumma);
+        cSharp5.setForeground(vaalea);
         cSharp5.setText("C#5");
         cSharp5.setMaximumSize(mustat);
         cSharp5.setMinimumSize(mustat);
@@ -116,8 +124,8 @@ public class SoitinPaneeli extends javax.swing.JPanel {
         d5.setPreferredSize(valkoiset);
         d5.setVerticalTextPosition(SwingConstants.TOP);
 
-        dSharp5.setBackground(new java.awt.Color(46, 46, 46));
-        dSharp5.setForeground(new java.awt.Color(205, 205, 205));
+        dSharp5.setBackground(tumma);
+        dSharp5.setForeground(vaalea);
         dSharp5.setText("D#5");
         dSharp5.setMaximumSize(mustat);
         dSharp5.setMinimumSize(mustat);
@@ -136,8 +144,8 @@ public class SoitinPaneeli extends javax.swing.JPanel {
         f5.setPreferredSize(valkoiset);
         f5.setVerticalTextPosition(SwingConstants.TOP);
 
-        fSharp5.setBackground(new Color(46, 46, 46));
-        fSharp5.setForeground(new Color(205, 205, 205));
+        fSharp5.setBackground(tumma);
+        fSharp5.setForeground(vaalea);
         fSharp5.setText("F#5");
         fSharp5.setMaximumSize(mustat);
         fSharp5.setMinimumSize(mustat);
@@ -150,8 +158,8 @@ public class SoitinPaneeli extends javax.swing.JPanel {
         g5.setPreferredSize(valkoiset);
         g5.setVerticalTextPosition(SwingConstants.TOP);
 
-        gSharp5.setBackground(new Color(46, 46, 46));
-        gSharp5.setForeground(new Color(205, 205, 205));
+        gSharp5.setBackground(tumma);
+        gSharp5.setForeground(vaalea);
         gSharp5.setText("G#5");
         gSharp5.setMaximumSize(mustat);
         gSharp5.setMinimumSize(mustat);
@@ -164,8 +172,8 @@ public class SoitinPaneeli extends javax.swing.JPanel {
         a5.setPreferredSize(valkoiset);
         a5.setVerticalTextPosition(SwingConstants.TOP);
 
-        aSharp5.setBackground(new Color(46, 46, 46));
-        aSharp5.setForeground(new Color(205, 205, 205));
+        aSharp5.setBackground(tumma);
+        aSharp5.setForeground(vaalea);
         aSharp5.setText("A#5");
         aSharp5.setMaximumSize(mustat);
         aSharp5.setMinimumSize(mustat);
@@ -178,8 +186,8 @@ public class SoitinPaneeli extends javax.swing.JPanel {
         b5.setPreferredSize(valkoiset);
         b5.setVerticalTextPosition(SwingConstants.TOP);
 
-        gSharp4.setBackground(new Color(46, 46, 46));
-        gSharp4.setForeground(new Color(205, 205, 205));
+        gSharp4.setBackground(tumma);
+        gSharp4.setForeground(vaalea);
         gSharp4.setText("G#4");
         gSharp4.setMaximumSize(mustat);
         gSharp4.setMinimumSize(mustat);
@@ -192,8 +200,8 @@ public class SoitinPaneeli extends javax.swing.JPanel {
         a4.setPreferredSize(valkoiset);
         a4.setVerticalTextPosition(SwingConstants.TOP);
 
-        aSharp4.setBackground(new Color(46, 46, 46));
-        aSharp4.setForeground(new Color(205, 205, 205));
+        aSharp4.setBackground(tumma);
+        aSharp4.setForeground(vaalea);
         aSharp4.setText("A#4");
         aSharp4.setMaximumSize(mustat);
         aSharp4.setMinimumSize(mustat);
@@ -218,8 +226,8 @@ public class SoitinPaneeli extends javax.swing.JPanel {
         c4.setPreferredSize(valkoiset);
         c4.setVerticalTextPosition(SwingConstants.TOP);
 
-        cSharp4.setBackground(new Color(46, 46, 46));
-        cSharp4.setForeground(new Color(205, 205, 205));
+        cSharp4.setBackground(tumma);
+        cSharp4.setForeground(vaalea);
         cSharp4.setText("C#4");
         cSharp4.setMaximumSize(mustat);
         cSharp4.setMinimumSize(mustat);
@@ -232,8 +240,8 @@ public class SoitinPaneeli extends javax.swing.JPanel {
         d4.setPreferredSize(valkoiset);
         d4.setVerticalTextPosition(SwingConstants.TOP);
 
-        dSharp4.setBackground(new Color(46, 46, 46));
-        dSharp4.setForeground(new Color(205, 205, 205));
+        dSharp4.setBackground(tumma);
+        dSharp4.setForeground(vaalea);
         dSharp4.setText("D#4");
         dSharp4.setMaximumSize(mustat);
         dSharp4.setMinimumSize(mustat);
@@ -246,8 +254,8 @@ public class SoitinPaneeli extends javax.swing.JPanel {
         e4.setPreferredSize(valkoiset);
         e4.setVerticalTextPosition(SwingConstants.TOP);
 
-        fSharp4.setBackground(new Color(46, 46, 46));
-        fSharp4.setForeground(new Color(205, 205, 205));
+        fSharp4.setBackground(tumma);
+        fSharp4.setForeground(vaalea);
         fSharp4.setText("F#4");
         fSharp4.setMaximumSize(mustat);
         fSharp4.setMinimumSize(mustat);
@@ -261,21 +269,10 @@ public class SoitinPaneeli extends javax.swing.JPanel {
         g4.setVerticalTextPosition(SwingConstants.TOP);
 
         pitchBendSlider.setOrientation(JSlider.VERTICAL);
-
-        scopePaneeli.setBackground(new Color(254, 254, 254));
-        scopePaneeli.setPreferredSize(new Dimension(55, 110));
-
-        javax.swing.GroupLayout scopePaneeliLayout = new GroupLayout(scopePaneeli);
-        scopePaneeli.setLayout(scopePaneeliLayout);
-        scopePaneeli.add(aS.getView());
-        scopePaneeliLayout.setHorizontalGroup(
-                scopePaneeliLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGap(0, 786, Short.MAX_VALUE)
-        );
-        scopePaneeliLayout.setVerticalGroup(
-                scopePaneeliLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGap(0, 0, Short.MAX_VALUE)
-        );
+//
+//        syotePaneeli.setBackground(new Color(254, 254, 254));
+//        syotePaneeli.setPreferredSize(new Dimension(55, 110));
+        
         GroupLayout jPanel1Layout = new GroupLayout(paneeli);
         paneeli.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -286,7 +283,7 @@ public class SoitinPaneeli extends javax.swing.JPanel {
                         .addComponent(pitchBendSlider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addComponent(scopePaneeli, GroupLayout.PREFERRED_SIZE, 786, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sP, GroupLayout.PREFERRED_SIZE, 786, GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(c5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
@@ -379,7 +376,7 @@ public class SoitinPaneeli extends javax.swing.JPanel {
                                                 .addComponent(aSharp4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(fSharp4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(scopePaneeli, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))))
+                                        .addComponent(sP, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

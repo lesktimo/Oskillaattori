@@ -1,4 +1,4 @@
-package lesktimo.oskillaattori.aani;
+package lesktimo.oskillaattori.aani.apu;
 
 /**
  * Yksinkertainen enum-luokka kuvaamaan nuottien relaatiota A4-nuottiin.
@@ -38,4 +38,5 @@ public enum Nuotti {
     public int getI() {
         return i;
     }
+    
 }
