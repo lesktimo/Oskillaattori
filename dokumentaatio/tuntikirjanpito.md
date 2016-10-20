@@ -15,4 +15,4 @@ Päivä | Tunnit | Kuvaus
 06.10.2016 | 2h | Koskettimiston debuggausta
 07.10.2016 | 4h | Koskettimiston debuggausta ja javadocia
 11.10.2016 | 1h | Koskettimilla soittamisen hotfix
-14.10.2016 | 2h | Soittamisen korjausta ja dokumentointia
+14.10.2016 | 3h | Soittamisen korjausta, jar ja dokumentointia
