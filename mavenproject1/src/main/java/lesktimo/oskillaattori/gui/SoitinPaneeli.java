@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JSlider;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.SwingConstants;
@@ -29,15 +30,12 @@ public class SoitinPaneeli extends javax.swing.JPanel {
             gSharp4, gSharp5;
     private AudioScope aS;
     private JPanel paneeli;
-    private JPanel syotePaneeli;
     private JSeparator valiviiva;
     private JSlider pitchBendSlider;
     private final Dimension valkoiset;
     private final Dimension mustat;
     private SubtractiveSynthVoice[] voices;
-    private InputMap inputs;
-    private ActionMap actions;
-    private JTextField syotekentta;
+    private JTextArea ohjeet;
     private Color tumma;
     private Color vaalea;
     private SyotePaneeli sP;
@@ -59,21 +57,23 @@ public class SoitinPaneeli extends javax.swing.JPanel {
         lisaaKuuntelijat(c4, cSharp4, d4, dSharp4, e4, f4, fSharp4, g4, gSharp4,
                 a4, aSharp4, b4, c5, cSharp5, d5, dSharp5, e5, f5, fSharp5, g5,
                 gSharp5, a5, aSharp5, b5, aS);
-        
+
     }
 
     private void initComponents() {
-//        voices = syntikka.getVoices();
-//        for (SubtractiveSynthVoice voice : voices) {
-//            aS.addProbe(voice.getOutput());
-//        }
-//        aS.setViewMode(AudioScope.ViewMode.SPECTRUM);
-//        aS.setTriggerMode(AudioScope.TriggerMode.AUTO);
-//        aS.setTriggerLevel(Double.MIN_VALUE);
-//        aS.getView().setControlsVisible(false);
 
         paneeli = new JPanel();
         valiviiva = new JSeparator();
+
+        ohjeet = new JTextArea();
+        ohjeet.setText("Voit soittaa syntetisaattoria alla olevalla koskettimistolla tai kirjoittaa tekstikenttään"
+                + "\n" + "nuotteja ja niiden pituuksia kaksoispisteellä erotettuina, ja eri nuotit pilkuilla erotettuina, "
+                + "\n" + "esim. 'C4 : 1/4, DSharp4 : 1/8, F5:1/4'."
+                + "\n" + "Käytettävissä on kaikki nuotit C4-B5, ja pituudet kokonuotista 1/32 nuottiin."
+                + "\n" + "Välilyönneillä tai kirjainkoolla ei ole merkitystä, kunhan nuotin ja sen pituuden välissä on kaksoispiste (:),"
+                + "\n" + "ja eri nuottien välissä pilkku (,). 'Soita' -nappi soittaa kirjoitetut nuotit kerran ja 'tyhjennä' -nappi tyhjentää kentän.");
+        ohjeet.disable();
+        ohjeet.setDisabledTextColor(tumma);
 
         c5 = new JButton();
         cSharp5 = new JButton();
@@ -269,10 +269,7 @@ public class SoitinPaneeli extends javax.swing.JPanel {
         g4.setVerticalTextPosition(SwingConstants.TOP);
 
         pitchBendSlider.setOrientation(JSlider.VERTICAL);
-//
-//        syotePaneeli.setBackground(new Color(254, 254, 254));
-//        syotePaneeli.setPreferredSize(new Dimension(55, 110));
-        
+
         GroupLayout jPanel1Layout = new GroupLayout(paneeli);
         paneeli.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -379,15 +376,17 @@ public class SoitinPaneeli extends javax.swing.JPanel {
                                         .addComponent(sP, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addComponent(ohjeet)
                 .addComponent(paneeli, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                 .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(ohjeet)
                         .addContainerGap(271, Short.MAX_VALUE)
                         .addComponent(paneeli, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())

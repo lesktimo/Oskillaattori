@@ -45,7 +45,7 @@ public class SyotePaneeli extends javax.swing.JPanel {
         tempoTeksti = new JLabel();
         soitonSeuranta = new JProgressBar();
 
-        syote.setText("Kirjoita tähän nuotteja ja niiden pituuksia kaksoispisteellä erotettuina, ja eri nuotit pilkuilla erotettuina, esim. 'C4:1/4, tauko:1/8,  DSharp4:1/8'.");
+        syote.setText("Paina ensin tyhjennä ja kirjoita sitten tähän nuotteja ja niiden pituuksia");
 
         soittoNappi.setText("Soita");
         tyhjennaNappi.setText("Tyhjennä");
@@ -57,7 +57,7 @@ public class SyotePaneeli extends javax.swing.JPanel {
         tyhjennaNappi.addActionListener(tyhjK);
         
         SoitaKuuntelija soitaK = new SoitaKuuntelija(syntikka.getLukija(), syote, soittoNappi);
-        soittoNappi.addChangeListener(soitaK);
+        soittoNappi.addActionListener(soitaK);
 
         tempoTeksti.setText("Tempo:");
 

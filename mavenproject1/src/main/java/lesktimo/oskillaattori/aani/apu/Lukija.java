@@ -3,8 +3,8 @@ package lesktimo.oskillaattori.aani.apu;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 
 /**
+ * Lukee käyttäjän syotetta UI:sta keräten nuotteja soitettavaksi
  *
- * @author lesktimo
  */
 public class Lukija {
 
@@ -12,6 +12,11 @@ public class Lukija {
     private Nuotti[] nuotit;
     boolean paalla;
 
+    /**
+     * Alustaa lukijalle käytettävän syntetisaattorin ja nuotit.
+     *
+     * @param syntikka Käytössä oleva syntetisaattori
+     */
     public Lukija(Syntetisaattori syntikka) {
         paalla = false;
         this.syntikka = syntikka;
@@ -22,18 +27,50 @@ public class Lukija {
             Nuotti.GSHARP4, Nuotti.GSHARP5};
     }
 
+    /**
+     * Lukee syötteestä nuotteja ja niiden pituuksia heittäen ne eteenpäin
+     * syntetisaattorille soitettavaksi.
+     *
+     * @param syote käyttäjän antama syöte
+     * @param paalla boolean arvo, jolla testataan pitääkö soittaa vai lopettaa
+     * soitto
+     * @throws InterruptedException Heittää virhesanoman mikäli juoksu
+     * keskeytyy.
+     */
     public void lue(String syote, boolean paalla) throws InterruptedException {
-        
-        String isoSyote = syote.toUpperCase();
-        String[] nuotitJaPituudet = isoSyote.split(",");
 
-        for (String string : nuotitJaPituudet) {
-            String[] yksiNuotti = string.split(":");
+        String[] nuotitJaPituudet = lueTeksti(syote);
+        if (nuotitJaPituudet.length > 0) {
+            for (String string : nuotitJaPituudet) {
+                soita(string, paalla);
+            }
+        }
+    }
+
+    public String[] lueTeksti(String syote) {
+        String isoSyote = syote.toUpperCase().trim();
+        String[] erottelu = isoSyote.split(",");
+        String[] palautus = erottelu;
+        int i = 0;
+        for (String string : erottelu) {
+            String x = string.replaceAll("\\s+", "");
+            palautus[i] = x;
+            i++;
+        }
+        return palautus;
+    }
+
+    public void soita(String syote, boolean paalla) throws InterruptedException {
+        String[] yksiNuotti = syote.split(":");
+        if (nuotit.length > 0) {
             for (Nuotti nuotti : nuotit) {
                 if (nuotti.toString().equals(yksiNuotti[0])) {
-                    System.out.println("Nuotti: " + yksiNuotti[0] + ", pituus: " + yksiNuotti[1]);
-                    syntikka.soitaLuettuNuotti(nuotti.getI(), yksiNuotti[1], paalla);
-                    break;
+                    if (paalla == true) {
+                        syntikka.soitaLuettuNuotti(nuotti.getI(), yksiNuotti[1], paalla);
+                        break;
+                    } else {
+                        break;
+                    }
                 }
             }
         }

@@ -241,11 +241,17 @@ public class Syntetisaattori {
     public SubtractiveSynthVoice[] getVoices() {
         return voices;
     }
-
+/**
+ * Saa arvokseen lukijan lukemat nuotit ja soittaa ne käyttäen allokaattoria.
+ * @param nuotinNumero Halutun nuotin relatiivinen numero, jotta tiedetään mikä nuotti soitetaan.
+ * @param pituus Kauanko nuottia tulee soittaa.
+ * @param paalla Halutaanko soittaa vai lopettaa soitto.
+ * @throws InterruptedException Heittää virhesanoman mikäli juoksu keskeytyy yllättäen.
+ */
     public void soitaLuettuNuotti(int nuotinNumero, String pituus, boolean paalla) throws InterruptedException {
         if (paalla == true) {
             noteOn(nuotinNumero, 100);
-            TimeUnit.SECONDS.sleep(tempo.laskeNuotinPituus(pituus));
+            TimeUnit.MILLISECONDS.sleep((long)tempo.laskeNuotinPituus(pituus));
             noteOff(nuotinNumero);
         } else if (paalla == false) {
             allokaattori.allNotesOff(masiina.createTimeStamp());

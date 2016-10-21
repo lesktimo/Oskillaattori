@@ -5,19 +5,19 @@
  */
 package lesktimo.oskillaattori.gui.kuuntelijat;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import lesktimo.oskillaattori.aani.apu.Lukija;
 
 /**
  *
  * @author lesktimo
  */
-public class SoitaKuuntelija implements ChangeListener {
+public class SoitaKuuntelija implements ActionListener {
 
     boolean paalla;
     private Lukija lukija;
@@ -32,11 +32,10 @@ public class SoitaKuuntelija implements ChangeListener {
     }
 
     @Override
-    public void stateChanged(ChangeEvent e) {
+    public void actionPerformed(ActionEvent e) {
         if (paalla == false) {
             try {
                 paalla = true;
-                soittoNappi.setText("Pysäytä");
                 lukija.lue(syoteKentta.getText(), paalla);
             } catch (InterruptedException ex) {
                 Logger.getLogger(SoitaKuuntelija.class.getName()).log(Level.SEVERE, null, ex);
@@ -44,7 +43,6 @@ public class SoitaKuuntelija implements ChangeListener {
         } else if (paalla == true) {
             try {
                 paalla = false;
-                soittoNappi.setText("Soita");
                 lukija.lue(syoteKentta.getText(), paalla);
             } catch (InterruptedException ex) {
                 Logger.getLogger(SoitaKuuntelija.class.getName()).log(Level.SEVERE, null, ex);
@@ -52,3 +50,4 @@ public class SoitaKuuntelija implements ChangeListener {
         }
     }
 }
+
