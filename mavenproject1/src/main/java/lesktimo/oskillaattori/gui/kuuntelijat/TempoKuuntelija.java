@@ -11,6 +11,7 @@ import javax.swing.event.ChangeListener;
 import lesktimo.oskillaattori.aani.apu.Tempo;
 
 /**
+ * Kuuntelija tempoon vaikuttavalle spinnerille.
  *
  * @author lesktimo
  */
@@ -19,11 +20,22 @@ public class TempoKuuntelija implements ChangeListener {
     private Tempo tempo;
     private JSpinner tempoKentta;
 
+    /**
+     * Alustaa kuuntelijan.
+     *
+     * @param tempo Kyseessä oleva tempo-olio.
+     * @param tempoKentta temmonsäätö -kenttä.
+     */
     public TempoKuuntelija(Tempo tempo, JSpinner tempoKentta) {
         this.tempo = tempo;
         this.tempoKentta = tempoKentta;
     }
 
+    /**
+     * Muuttaa tempoa spinnerin tilan muuttuessa.
+     *
+     * @param e Eventti.
+     */
     @Override
     public void stateChanged(ChangeEvent e) {
         int muutos = (int) tempoKentta.getValue();

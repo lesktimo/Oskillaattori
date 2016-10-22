@@ -7,9 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
-import javax.swing.JToggleButton;
 import javax.swing.LayoutStyle;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SpinnerNumberModel;
 import lesktimo.oskillaattori.aani.Syntetisaattori;
 import lesktimo.oskillaattori.gui.kuuntelijat.SoitaKuuntelija;
@@ -17,6 +15,7 @@ import lesktimo.oskillaattori.gui.kuuntelijat.TempoKuuntelija;
 import lesktimo.oskillaattori.gui.kuuntelijat.TyhjennaKuuntelija;
 
 /**
+ * Paneeli joka sisältää tarvittavat komponentit käyttäjän syötteen lukemiseen.
  *
  * @author lesktimo
  */
@@ -30,11 +29,19 @@ public class SyotePaneeli extends javax.swing.JPanel {
     private JButton tyhjennaNappi;
     private Syntetisaattori syntikka;
 
+    /**
+     * Alustaa paneelin.
+     *
+     * @param s Käytössä oleva syntikka.
+     */
     public SyotePaneeli(Syntetisaattori s) {
         this.syntikka = s;
         luoKomponentit();
     }
 
+    /**
+     * Luo tarvittavat komponentit.
+     */
     private void luoKomponentit() {
 
         syote = new JTextField();
@@ -52,10 +59,10 @@ public class SyotePaneeli extends javax.swing.JPanel {
 
         TempoKuuntelija tempK = new TempoKuuntelija(syntikka.getTempo(), tempoKentta);
         tempoKentta.addChangeListener(tempK);
-        
+
         TyhjennaKuuntelija tyhjK = new TyhjennaKuuntelija(syote);
         tyhjennaNappi.addActionListener(tyhjK);
-        
+
         SoitaKuuntelija soitaK = new SoitaKuuntelija(syntikka.getLukija(), syote, soittoNappi);
         soittoNappi.addActionListener(soitaK);
 

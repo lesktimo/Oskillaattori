@@ -70,19 +70,29 @@ public class LukijaTest {
         String[] testi;
         String testisyote = "c4 : 1 / 8  ,  fsharp5 : 1/16";
         testi = l.lueTeksti(testisyote);
-        l.soita(testisyote, testiB);
+        l.soita(testi[0], testiB);
         assertEquals(false, testiB);
     }
     
-//    @Test
-//    public void soittaakoLukijaOikein3() throws InterruptedException {
-//        Syntetisaattori s = new Syntetisaattori(44100, 1, 2, 3);
-//        Lukija l = new Lukija(s);
-//        boolean testiB = true;
-//        String[] testi;
-//        String testisyote = "c4 : 1 / 8  ,  fsharp5 : 1/16";
-//        testi = l.lueTeksti(testisyote);
-//        l.soita(testisyote, testiB);
-//        assertEquals(false, testiB);
-//    }
+    @Test
+    public void lukeekoLukijaOikeinTyhja() throws InterruptedException {
+        Syntetisaattori s = new Syntetisaattori(44100, 1, 2, 3);
+        Lukija l = new Lukija(s);
+        String[] testi;
+        String[] varmistus = {};
+        String testisyote = "";
+        testi = l.lueTeksti(testisyote);
+        Assert.assertArrayEquals(testi, varmistus);
+    }
+    
+    @Test
+    public void soittaakoLukijaOikeinTyhja() throws InterruptedException {
+        Syntetisaattori s = new Syntetisaattori(44100, 1, 2, 3);
+        Lukija l = new Lukija(s);
+        String testisyote = "";
+        l.lue(testisyote, true);
+        assertEquals(testisyote, "");
+    }
+      
+       
 }

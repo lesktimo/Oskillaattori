@@ -17,3 +17,5 @@ Päivä | Tunnit | Kuvaus
 11.10.2016 | 1h | Koskettimilla soittamisen hotfix
 14.10.2016 | 3h | Soittamisen korjausta, jar ja dokumentointia
 20.10.2016 | 6h | Nuottien soittamista syötteestä
+21.10.2016 | 3h | Syötteen luvun debuggausta ja testausta
+22.10.2016 | 3h | Testejä ja dokumentaatiota

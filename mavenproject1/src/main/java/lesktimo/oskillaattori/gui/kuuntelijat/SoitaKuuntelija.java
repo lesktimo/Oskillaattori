@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import lesktimo.oskillaattori.aani.apu.Lukija;
 
 /**
+ * Soita-napin kuuntelija.
  *
  * @author lesktimo
  */
@@ -24,6 +25,13 @@ public class SoitaKuuntelija implements ActionListener {
     private JTextField syoteKentta;
     private JButton soittoNappi;
 
+    /**
+     * Alustaa kuuntelijan.
+     *
+     * @param lukija Käytössä oleva lukija-olio, joka lukee tekstiä.
+     * @param syoteKentta Käytössä oleva tekstikenttä.
+     * @param soittoNappi Nappi, jolla soitto alkaa.
+     */
     public SoitaKuuntelija(Lukija lukija, JTextField syoteKentta, JButton soittoNappi) {
         this.lukija = lukija;
         this.syoteKentta = syoteKentta;
@@ -50,4 +58,3 @@ public class SoitaKuuntelija implements ActionListener {
         }
     }
 }
-

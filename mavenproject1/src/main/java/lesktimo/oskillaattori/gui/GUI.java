@@ -87,6 +87,7 @@ public class GUI implements Runnable {
         SpinnerNumberModel model2 = new SpinnerNumberModel(440.0, 0.00, 8000.00, 0.01);
         SpinnerNumberModel model3 = new SpinnerNumberModel(440.0, 0.00, 8000.00, 0.01);
         JLabel taajuusOsk1 = new JLabel("1. Oskillaattorin Taajuus: " + taajuus1 + " Hz");
+        //spinnerit ei toimi vielä, tarkoitus olisi hienosäätää taajuutta
         JSpinner taajuusSpinner1 = new JSpinner(model1);
         JSlider taajuusSlider1 = new JSlider(JSlider.HORIZONTAL, 0, 790213, 44000);
         JLabel voimakkuusOsk1 = new JLabel("1. Oskillaattorin Voimakkuus: " + voimakkuus1);
@@ -113,6 +114,7 @@ public class GUI implements Runnable {
         voimakkuusSlider2.addChangeListener(vSK2);
         VoimakkuusSliderKuuntelija vSK3 = new VoimakkuusSliderKuuntelija(3, voimakkuusOsk3, voimakkuusSlider3, osk3);
         voimakkuusSlider3.addChangeListener(vSK3);
+
         sisalto.add(luoValikko1(aloita, lopeta));
         sisalto.add(luoValikko2(taajuusOsk1, taajuusSlider1, taajuusSpinner1));
         sisalto.add(luoValikko3(voimakkuusOsk1, voimakkuusSlider1));

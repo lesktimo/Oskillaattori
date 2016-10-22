@@ -28,7 +28,7 @@ public class Tempo {
     }
 
     /**
-     * Asettaa uuden temmon
+     * Asettaa uuden temmon.
      *
      * @param uusiTempo uusi haluttu arvo temmolle.
      */
